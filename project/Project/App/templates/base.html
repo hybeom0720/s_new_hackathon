@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="nav-bar">
-        <a class="logo" href="{% url 'home' %}"><img src="../static/logo.png" alt="logo"></a>
+        <a class="logo" href="{% url 'home' %}"><img src="" alt="logo"></a>
         <div class="main-nav-bar">
             <a class="nav-item" href="{% url 'home' %}">HOME</a>
             <a class="nav-item" href="{% url 'about' %}">ABOUT</a>
@@ -20,7 +20,7 @@
             <a class="nav-item" href="{% url 'board' %}">BOARD</a>
             <a class="nav-item" href="{% url 'joinUs' %}">JOIN US</a>
         </div>
-         <div class="member-nav-bar">
+        <div class="member-nav-bar">
             {% if user.is_authenticated %}
             <div class="nav-item user-name"><p>멋쟁이 USER님</p></div>
             {% else %}
@@ -28,31 +28,30 @@
             <a class="nav-item" href="{% url 'signup' %}">회원가입</a>
             {% endif %}
         </div>
-   </div>
-   {% if user.is_authenticated %}
-   <div class="member-option">
-      <a class="nav-item" href="{% url 'mypage' %}">마이페이지</a>
-      <a class="nav-item" href="{% url 'logout' %}">로그아웃</a>
-   </div>
-   {% endif %}
+    </div>
+    {% if user.is_authenticated %}
+    <div class="member-option">
+        <a class="nav-item" href="{% url 'mypage' %}">마이페이지</a>
+        <a class="nav-item" href="{% url 'logout' %}">로그아웃</a>
+    </div>
+    {% endif %}
     {% block content %}
     {% endblock content %}
     <footer>
-        <img class="logo_white" src="../static/logo_white.png" alt="logo_white">
-        <div class="contact">
-            <h3>CONTACT</h3>
-            <p class="president"><img src="../static/president.svg" alt="president">조성우</p>
-            <p class="address"><img src="../static/address.svg" alt="address">서울시 성북구 안암로 145, 고려대학교</p>
-            <p class="tel"><img src="../static/tel.svg" alt="tel">010-3146-1147</p>
-            <p class="email"><img src="../static/email.svg" alt="email">nextlikelion@likelion.org</p>
+        <div class="footer_item">
+            <img class="logo_white" src="../static/logo_white.png" alt="logo_white">
+            <div class="contact">
+                <h3>CONTACT</h3>
+                <p class="contact-item"><img src="../static/president.svg" alt="president">조성우</p>
+                <p class="contact-item"><img src="../static/address.svg" alt="address">서울시 성북구 안암로 145, 고려대학교 경영대학</p>
+                <p class="contact-item"><img src="../static/tel.svg" alt="tel">010-3146-1147</p>
+                <p class="contact-item"><img src="../static/email.svg" alt="email">nextlikelion@likelion.org</p>
+            </div>
+            <div class="sns">
+                <a class="sns-item" href=""><img src="../static/facebook.svg" alt="facebook"></a>
+                <a class="sns-item" href=""><img src="../static/instagram.svg" alt="instagram"></a>
         </div>
-        <div class="sns">
-            <a class="facebook" href=""><img src="../static/facebook.svg" alt="facebook"></a>
-            <a class="instagram" href=""><img src="../static/instagram.svg" alt="instagram"></a>
-        </div>
-        <div class="copyright">Copyright © 2020 NEXT x LIKELION All rights reserved</div>
     </footer>
     <script src="../static/base.js"></script>
-    {% block js %}{% endblock js %}
 </body>
 </html>
