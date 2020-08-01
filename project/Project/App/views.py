@@ -17,9 +17,6 @@ TEMP_DIR = os.path.join(BASE_DIR, "app", "DataBase", "MemberDataBase.csv")
 def home(request):
     
     return render(request, 'home.html')
-  
-  def home(request):
-    return render(request, 'home.html')
 
 def login(request):
     if request.method == 'POST':
