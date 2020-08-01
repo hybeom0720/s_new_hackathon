@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<table>
+    <tr>
+        <th>분류</th>
+        <th>작성자</th>
+        <th>제목</th>
+    </tr>
+
+    {% for post in posts %}
+    <tr>
+        <td>{{ post.category }}</td>
+        <td>{{ post.author }}</td>
+        <td><a href="{% url 'notice_detail' %}">{{ post.title }}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'notice_new' %}">새로작성</a>
+{% endblock content %}>

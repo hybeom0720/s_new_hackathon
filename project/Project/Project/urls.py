@@ -22,8 +22,17 @@ urlpatterns = [
     path('registration/signup/',views.signup, name="signup" ),
     path('registration/login/', views.login, name="login"),
     path('registration/logout', views.logout, name="logout"),
-    path('board/',views.board, name='board'),
-    path('board/board_detail/<int:pk>', views.board_detail, name='board_detail'),
+    
+    # path('board/',views.board, name='board'),
+    # path('board/board_detail/<int:pk>', views.board_detail, name='board_detail'),
     path('', views.home, name = "home"),
-    path('memberCheck', views.memberCheck, name = "memberCheck")
+    path('memberCheck', views.memberCheck, name = "memberCheck"),
+    path('board_notice',views.board_notice, name = 'board_notice'),
+    path('board_session', views.board_session, name = 'board_session'),
+    path('board_session/detail/<int:pk>', views.session_detail, name = 'session_detail'),
+    path('board_notice/detail/<int:pk>',views.notice_detail, name = 'notice_detail'),
+    path('board_notice/edit/<int:pk>',views.notice_edit, name = 'notice_edit'),
+    path('board_notice/new',views.notice_new,name="notice_new"),
+    path('board_session/new',views.session_new,name="session_new"),
+    
 ]
