@@ -136,6 +136,36 @@ def session_edit(request):
 
 
 
+def board(request):
+    board_post = Post.objects.all()
+    return render(request, 'board.html', {'board_posts' : board_post})
+
+def board_notice(request):
+    if request.method != "POST":
+        posts = Post.objects.get(category = "공지사항")
+        return render(request, 'board_notice.html', {'posts':posts})
+    elif request.method == "POST":
+        request_body = json.loads(request.body)
+        searchWord = request_body["searchWord"]
+        posts = Post.objects.get(category= "공지사항")
+        sendPostCategory = []
+        sendPostAuthor = []
+        sendPostTitle = []
+        for i in range(0, len(posts)):
+            if searchWord in posts[0].title:
+                sendPostCategory.append(posts[i].category)
+                sendPostAuthor.append(posts[i].author)
+                sendPostTitle.append(posts[i].title)
+            
+    response = {
+        'author': sendPostAuthor,
+        'title' : sendPostTitle,
+        'category' : sendPostCategory
+    }
+
+    return HttpResponse(json.dumps(response))
+
+
 
 def notice_detail (request, post_pk):
     post = Post.objects.get(pk=post_pk)
