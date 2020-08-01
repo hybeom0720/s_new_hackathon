@@ -1,87 +1,81 @@
-{% extends 'base.html' %}
-{% block title %}{% endblock title %}
-{% load static %}
-<link rel="stylesheet" type="text/css" href="/App/static/joinUs.css">
-<link
-  href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-  rel="stylesheet">
-
-{% block content %}
+{% extends 'base.html' %} {% block title %}{% endblock title %} {% load static %} {% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'joinUs.css' %}"> {% endblock css %}
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> {% block content %}
 <main>
-  <!--   mainbox 시작 -->
-  <div class="main-box">
-    <div class="main-content-box">
+    <!--   mainbox 시작 -->
+    <div class="main-box">
+        <div class="main-content-box">
 
-      <div class="main-content-item one">JOIN US</div>
-      <div class="main-content-item two">멋쟁이 사자처럼</br>고려대학교 9기 모집</div>
-      <div class="main-content-item three">
+            <div class="main-content-item one">JOIN US</div>
+            <div class="main-content-item two">멋쟁이 사자처럼</br>고려대학교 9기 모집</div>
+            <div class="main-content-item three">
 
-        2021년 2월 20일 -
-        <br>
-        2021년 3월 27일</div>
+                2021년 2월 20일 -
+                <br> 2021년 3월 27일</div>
+        </div>
     </div>
-  </div>
-  <!--   mainbox 끝 -->
+    <!--   mainbox 끝 -->
 
-  <!-- content 시작 -->
-  <div class="content">
-    <div class="content-one">
-      <div class="content-title">
-        ✔️ 지원자격
-      </div>
-      <div class="content-p">
-        <bold>생각만 해오던 아이디어</bold>가 있다면
-        <br>그 아이디어를 <bold>내 손으로 실현</bold>시키고 싶다면
-        <br>
-        <bold>프로그래밍을 배울 열정</bold>이 있다면
-
-        <br>
-        <bold>전공불문 실력불문 나이불문</bold> 누구나!
-        <br>지원하실 수 있습니다!
-
-      </div>
-      <div class="content-two">
-        <div class="content-title">
-          📍 모집 일정
-        </div>
-        <div class="content-p">
-          서류접수: 2월 20일(수) ~ 3월 7일(목)
-          <br>설명회: 3월 4일(월)
-          <br>면접: 3월 9일(토) ~ 3월 10일(일)
-          <br>합격자 발표: 3월 11일(월)
-          <br>멋사고대 OT: 3월 14일(목)
-          <br>멋사중앙 OT: 3월 16일(토)
-          <br>멋사고대 MT: 3월 16일(토) ~ 3월 17일(일
-
-        </div>
-        <div class="content-three">
-          <div class="content-title">
-            📞 문의
-          </div>
-          <div class="content-p">
-            대표 조성우 010-3146-1147
-          </div>
-          <div class="content-four">
+    <!-- content 시작 -->
+    <div class="content">
+        <div class="content-one">
             <div class="content-title">
-              👉🏻 지원하기
+                ✔️ 지원자격
             </div>
             <div class="content-p">
-              지원서 파일 형식은
-              <br>
-              <bold>반드시 PDF</bold>로 보내주시길 바랍니다.
-              <form id="form1" action="uploadForm" method="post" enctype="multipart/form-data" target="repacatFrame">
-                <input class="input-file" type="file" name="file">
-                <input class="submit-button" type="submit">
-              </form>
+                <bold>생각만 해오던 아이디어</bold>가 있다면
+                <br>그 아이디어를
+                <bold>내 손으로 실현</bold>시키고 싶다면
+                <br>
+                <bold>프로그래밍을 배울 열정</bold>이 있다면
+
+                <br>
+                <bold>전공불문 실력불문 나이불문</bold> 누구나!
+                <br>지원하실 수 있습니다!
 
             </div>
-          </div>
+            <div class="content-two">
+                <div class="content-title">
+                    📍 모집 일정
+                </div>
+                <div class="content-p">
+                    서류접수: 2월 20일(수) ~ 3월 7일(목)
+                    <br>설명회: 3월 4일(월)
+                    <br>면접: 3월 9일(토) ~ 3월 10일(일)
+                    <br>합격자 발표: 3월 11일(월)
+                    <br>멋사고대 OT: 3월 14일(목)
+                    <br>멋사중앙 OT: 3월 16일(토)
+                    <br>멋사고대 MT: 3월 16일(토) ~ 3월 17일(일
 
-        </div>
+                </div>
+                <div class="content-three">
+                    <div class="content-title">
+                        📞 문의
+                    </div>
+                    <div class="content-p">
+                        대표 조성우 010-3146-1147
+                    </div>
+                    <div class="content-four">
+                        <div class="content-title">
+                            👉🏻 지원하기
+                        </div>
+                        <div class="content-p">
+                            지원서 파일 형식은
+                            <br>
+                            <bold>반드시 PDF</bold>로 보내주시길 바랍니다.
+                            <form id="form1" action="uploadForm" method="post" enctype="multipart/form-data" target="repacatFrame">
+                                <input class="input-file" type="file" name="file">
+                                <input class="submit-button" type="submit">
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
 
 
-      </div>
-      <!-- content 끝 -->
+            </div>
+            <!-- content 끝 -->
 
 
 
