@@ -7,7 +7,7 @@ class MsUser(models.Model):
     name = models.TextField()
     kisoo = models.IntegerField(null = True, blank = True)
     address = models.TextField()
-    department = models.TextField()
+    major = models.TextField()
     idNumber = models.IntegerField()
     authority = models.TextField()
 
