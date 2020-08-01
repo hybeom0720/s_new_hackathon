@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}{% endblock title %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'memberCheck.css' %}">
     <div class = "showingGisoo">
         <form>
         <select class = 'Gisoo'>
@@ -63,6 +59,7 @@
     </script>
 
 
-</body>
-</html>
 
+{% block content %}
+
+{% endblock content %}
