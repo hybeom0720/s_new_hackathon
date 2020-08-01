@@ -1,17 +1,21 @@
 {% extends 'base.html' %}
+<link rel="stylesheet" type="text/css" href="/App/static/login.css">
+<link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 
- 
+
 {% block content %}
-<h1>로그인</h1>
+<h1>LOG IN</h1>
 {% if error %}
 <h3 style="color: red;">{{error}}</h3>
 {% endif %}
 
 <form method="POST">
     {% csrf_token %}
-    <input type="text" name="username" placeholder="아이디">
-    <input type="password" name="password" placeholder="비밀번호">
-    <button type="submit ">로그인 </button>
+    <input id="input" type="text" name="username" placeholder="ID">
+    <input id="input" type="password" name="password" placeholder="PW">
+    <button id="button" type="submit "> GO </button>
 
 </form>
 

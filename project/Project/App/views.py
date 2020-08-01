@@ -21,17 +21,19 @@ TEMP_DIR = os.path.join(BASE_DIR, "app", "DataBase", "MemberDataBase.csv")
 # Create your views here.
 
 def home(request):
-    
     return render(request, 'home.html')
 
 def about(request):
     return render(request, 'about.html')
 
 def activities(request):
-    return render(request, "activities.html")
-
-def joinUs(reqeuest):
-    return render(request, "joinUs.html")
+    return render(request, 'activities.html')
+    
+def members(request):
+    return render(request, 'members.html')
+    
+def joinUs(request):
+    return render(request, 'joinUs.html')
 
 def login(request):
     if request.method == 'POST':
@@ -294,8 +296,9 @@ def memberCheck(request):
     # return render(request.memberCheck.html)
 
 
-@login_required(login_url='/registration/login')
+# @login_required(login_url='/registration/login')
 def joinUs(request):
+    print("난 삶이 힘들 떄 자바를 해")
     if request.method == 'POST':
         file_to_upload = request.FILES.get('file')
         session = Session(

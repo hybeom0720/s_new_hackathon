@@ -1,19 +1,26 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../static/base.css"> 
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/base.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
     <title>{% block title %}고려대학교 멋쟁이 사자처럼{% endblock title %}</title>
     {% block css %}{% endblock css %}
 </head>
 
 <body>
     <div class="nav-bar">
-        <a class="logo" href="{% url 'home' %}"><img src="" alt="logo"></a>
+        <a class="logo" href="{% url 'home' %}"><img src="../static/logo.png" alt="logo"></a>
         <div class="main-nav-bar">
             <a class="nav-item" href="{% url 'home' %}">HOME</a>
             <a class="nav-item" href="{% url 'about' %}">ABOUT</a>
@@ -23,27 +30,24 @@
         </div>
         <div class="member-nav-bar">
             {% if user.is_authenticated %}
-            <div class="nav-item">
-                <p>멋쟁이 {{ user.username }}님</p>
+            <div class="nav-item user-name">
+                <p>멋쟁이 USER님</p>
             </div>
-            <div class="member-option">
-                <a class="nav-item" href="{% url 'mypage' %}">마이페이지</a>
-                <a class="nav-item" href="{% url 'logout' %}">로그아웃</a>
-            </div>
-
             {% else %}
             <a class="nav-item" href="{% url 'login' %}">LOGIN</a>
-            <a class="nav-item" href="{% url 'signup' %}">회원가입</a>
-            {% endif %}
+            <a class="nav-item" href="{% url 'signup' %}">회원가입</a> {% endif %}
         </div>
     </div>
+
     {% if user.is_authenticated %}
     <div class="member-option">
         <a class="nav-item" href="{% url 'mypage' %}">마이페이지</a>
         <a class="nav-item" href="{% url 'logout' %}">로그아웃</a>
     </div>
+<<<<<<< HEAD
     {% endif %}
     {% block content %}
+
     {% endblock content %}
     <footer>
         <div class="footer_item">
@@ -61,6 +65,80 @@
         </div>
     </footer>
     <script src="../static/base.js"></script>
+      <script type="text/javascript">
+      /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+      (function(d, m){
+        var kommunicateSettings = {"appId":"a6f13994ce9205491944ea2f00ae9abf","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+      })(document, window.kommunicate || {});
+
+            function test(imageName) {
+                LoadingWithMask('your site\'s image path');
+                setTimeout("closeLoadingWithMask()", 3000);
+            }
+ 
+            function LoadingWithMask(gif) {
+            //화면의 높이와 너비를 구합니다.
+            var maskHeight = $(document).height();
+            var maskWidth  = window.document.body.clientWidth;
+            var body = document.querySelector('body');
+            
+            var mask    ="<div id='mask' style='position:absolute; z-index:9000; background-color:#000000; display:none; left:0; top:0;'></div>";
+            var loadingImg ='';
+            
+            loadingImg +=" <img src='./loadingImg.gif' style='position: absolute; display: block; margin: 0px auto;'/>";
+        
+            $('#body').append(mask)
+            body.append(mask)
+        
+            $('#mask').css({
+                    'width' : maskWidth,
+                    'height': maskHeight,
+                    'opacity' :'0.3'
+            });
+    
+            //마스크 표시
+            $('#mask').show();
+        
+            //로딩중 이미지 표시
+            $('#loadingImg').append(loadingImg);
+            $('#loadingImg').show();
+        }
+ 
+    function closeLoadingWithMask() {
+        $('#mask, #loadingImg').hide();
+        $('#mask, #loadingImg').empty(); 
+    }
+
+
+
+
+  </script>
+=======
+    {% endif %} {% block content %} {% endblock content %}
+    <script src="../static/base.js"></script>
+    {% block js %}{% endblock js %}
+>>>>>>> 4be072a73a4e11a3d49c9e9c8999ccc97a69718b
 </body>
+<footer>
+    <div class="footer_item">
+        <img class="logo_white" src="../static/logo_white.png" alt="logo_white">
+        <div class="contact">
+            <h3>CONTACT</h3>
+            <p class="contact-item"><img src="../static/president.svg" alt="president">조성우</p>
+            <p class="contact-item"><img src="../static/address.svg" alt="address">서울시 성북구 안암로 145, 고려대학교 경영대학</p>
+            <p class="contact-item"><img src="../static/tel.svg" alt="tel">010-3146-1147</p>
+            <p class="contact-item"><img src="../static/email.svg" alt="email">nextlikelion@likelion.org</p>
+        </div>
+        <div class="sns">
+            <a class="sns-item" href=""><img src="../static/facebook.svg" alt="facebook"></a>
+            <a class="sns-item" href=""><img src="../static/instagram.svg" alt="instagram"></a>
+        </div>
+    </div>
+    <div class="copyright">Copyright © 2020 NEXT x LIKELION All rights reserved</div>
+</footer>
 
 </html>
