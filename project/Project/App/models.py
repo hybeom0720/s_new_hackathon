@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class MsUser(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null = False)
+    user = models.TextField() 
     name = models.TextField()
     kisoo = models.IntegerField(null = True, blank = True)
     email = models.TextField()
@@ -11,12 +11,14 @@ class MsUser(models.Model):
     idNumber = models.IntegerField()
     authority = models.TextField()
 
+
 class TempMsUser(models.Model):
     name = models.TextField()
     kisoo = models.IntegerField(null = True, blank = True)
     email = models.TextField()
     major = models.TextField()
     idNumber = models.IntegerField()
+
 
 BOARD_TYPE = (
     ("1", "공지사항"),
@@ -33,7 +35,6 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete = models.CASCADE, related_name = 'comments')
     content = models.TextField()

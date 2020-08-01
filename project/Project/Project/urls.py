@@ -34,5 +34,8 @@ urlpatterns = [
     path('board_notice/edit/<int:pk>',views.notice_edit, name = 'notice_edit'),
     path('board_notice/new',views.notice_new,name="notice_new"),
     path('board_session/new',views.session_new,name="session_new"),
-    
+    path("about", views.about, name = "about"),
+    path("activities", views.activities, name = "activities"),
+    path("joinUS", views.joinUs, name = "joinUs"),
+    path('mypage', views.myPage, name ="mypage")
 ]

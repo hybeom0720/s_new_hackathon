@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import MsUser, TempMsUser, Post, Comment, Like
 from django.contrib.auth.models import User
+from Project.settings import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, AWS_S3_REGION_NAME
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
@@ -8,6 +9,11 @@ from django.http import HttpResponse
 from django.urls import reverse
 from django.http import JsonResponse
 import json, csv, os
+import boto3
+from boto3.session import Session
+from datetime import datetime, timedelta
+
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMP_DIR = os.path.join(BASE_DIR, "app", "DataBase", "MemberDataBase.csv")
@@ -17,6 +23,15 @@ TEMP_DIR = os.path.join(BASE_DIR, "app", "DataBase", "MemberDataBase.csv")
 def home(request):
     
     return render(request, 'home.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+def activities(request):
+    return render(request, "activities.html")
+
+def joinUs(reqeuest):
+    return render(request, "joinUs.html")
 
 def login(request):
     if request.method == 'POST':
@@ -36,7 +51,7 @@ def login(request):
 
     return render(request, 'registration/login.html')
 
-
+@csrf_exempt
 def signup(request):
     if request.method == 'POST':
         found_user = User.objects.filter(username = request.POST['username'])
@@ -49,8 +64,12 @@ def signup(request):
             password = request.POST['password']
         )
 
+        select_user = User.objects.filter(username = new_user.username)
+        print(select_user)
+        select_user = select_user[0]
+        print(select_user)
         MsUser.objects.create(
-            user = new_user.username,
+            user = select_user.username,
             name = request.POST['name'],
             kisoo = request.POST['kisoo'],
             email = request.POST['email'],
@@ -58,10 +77,22 @@ def signup(request):
             idNumber = request.POST['idNumber']
         )
 
+        add_user = MsUser.objects.filter(user = new_user.username)
+        BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        TEMP_DIR = os.path.join(BASE_DIR, "App", "DataBase", "MemberDataBase.csv")
+        f = open(TEMP_DIR,'a', newline='')
+        wr = csv.writer(f)
+        add_user = add_user[0]
+        wr.writerow([add_user.name, add_user.kisoo, add_user.email, add_user.major, add_user.idNumber])
+        
+        f.close()
+
         auth.login(request,new_user)
         return redirect('home')
     
+
     return render(request,'registration/signup.html')
+
 
 
 def logout(request):
@@ -174,7 +205,7 @@ def memberCheck(request):
     TEMP_DIR = os.path.join(BASE_DIR, "App", "DataBase", "MemberDataBase.csv")
     TempMsUser.objects.all().delete()
 
-    with open(TEMP_DIR, newline='', encoding = "euc-kr") as csvfile:
+    with open(TEMP_DIR, newline='') as csvfile:
         csv_data = list(csv.reader(csvfile))
         
     if request.method != 'POST':
@@ -231,3 +262,26 @@ def memberCheck(request):
 
 
     # return render(request.memberCheck.html)
+
+
+@login_required(login_url='/registration/login')
+def joinUs(request):
+    if request.method == 'POST':
+        file_to_upload = request.FILES.get('file')
+        session = Session(
+            aws_access_key_id = AWS_ACCESS_KEY_ID,
+            aws_secret_access_key = AWS_SECRET_ACCESS_KEY,
+            region_name = AWS_S3_REGION_NAME
+        )
+        s3 = session.resource('s3')
+        now = datetime.now().strftime("%Y%H%M%S")
+
+        lfile_object = s3.Bucket(AWS_STORAGE_BUCKET_NAME).put_object(
+            Key = now + file_to_upload.name,
+            Body = file_to_upload
+        )
+        # s3_url = 'https://sanggyeong-bucket.s3.ap-northeast-2.amazonaws.com/'
+        return redirect('home')
+
+    return render(request, 'joinUs.html')
+

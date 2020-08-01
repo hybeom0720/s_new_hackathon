@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}{% endblock title %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'joinUs.css' %}">
+<link rel="stylesheet" type="text/css" href="../static/joinUs.css">
 
 {% block content %}
+  <main>
+   <form id="form1" action="uploadForm" method="post" enctype="multipart/form-data" target="repacatFrame">
+     <h1>지원서 첨부하기</h1>
+    <input class="input-file" type="file" name="file">
+    <input class="submit-button" type="submit">
+   </form>
+  </main>
 {% endblock content %}
