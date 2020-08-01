@@ -45,26 +45,25 @@
         <a class="nav-item" href="{% url 'logout' %}">로그아웃</a>
     </div>
     {% endif %} {% block content %} {% endblock content %}
-    <footer>
-        <div class="footer_item">
-            <img class="logo_white" src="../static/logo_white.png" alt="logo_white">
-            <div class="contact">
-                <h3>CONTACT</h3>
-                <p class="contact-item"><img src="../static/president.svg" alt="president">조성우</p>
-                <p class="contact-item"><img src="../static/address.svg" alt="address">서울시 성북구 안암로 145, 고려대학교 경영대학</p>
-                <p class="contact-item"><img src="../static/tel.svg" alt="tel">010-3146-1147</p>
-                <p class="contact-item"><img src="../static/email.svg" alt="email">nextlikelion@likelion.org</p>
-            </div>
-            <div class="sns">
-                <a class="sns-item" href=""><img src="../static/facebook.svg" alt="facebook"></a>
-                <a class="sns-item" href=""><img src="../static/instagram.svg" alt="instagram"></a>
-            </div>
-
-        </div>
-        <div class="copyright">Copyright © 2020 NEXT x LIKELION All rights reserved</div>
-    </footer>
     <script src="../static/base.js"></script>
     {% block js %}{% endblock js %}
 </body>
+<footer>
+    <div class="footer_item">
+        <img class="logo_white" src="../static/logo_white.png" alt="logo_white">
+        <div class="contact">
+            <h3>CONTACT</h3>
+            <p class="contact-item"><img src="../static/president.svg" alt="president">조성우</p>
+            <p class="contact-item"><img src="../static/address.svg" alt="address">서울시 성북구 안암로 145, 고려대학교 경영대학</p>
+            <p class="contact-item"><img src="../static/tel.svg" alt="tel">010-3146-1147</p>
+            <p class="contact-item"><img src="../static/email.svg" alt="email">nextlikelion@likelion.org</p>
+        </div>
+        <div class="sns">
+            <a class="sns-item" href=""><img src="../static/facebook.svg" alt="facebook"></a>
+            <a class="sns-item" href=""><img src="../static/instagram.svg" alt="instagram"></a>
+        </div>
+    </div>
+    <div class="copyright">Copyright © 2020 NEXT x LIKELION All rights reserved</div>
+</footer>
 
 </html>
