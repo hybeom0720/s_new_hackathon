@@ -4,11 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="../static/base.css"> 
-=======
-    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
->>>>>>> b81441a5506271fd18b6fb23df286f9a1ef32cfb
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title>{% block title %}고려대학교 멋쟁이 사자처럼{% endblock title %}</title>
@@ -22,7 +18,7 @@
             <a class="nav-item" href="{% url 'home' %}">HOME</a>
             <a class="nav-item" href="{% url 'about' %}">ABOUT</a>
             <a class="nav-item" href="{% url 'activities' %}">ACTIVITIES</a>
-            <a class="nav-item" href="{% url 'members' %}">MEMBERS</a>
+            <a class="nav-item" href="{% url 'memberCheck' %}">MEMBERS</a>
             <a class="nav-item" href="{% url 'board' %}">BOARD</a>
             <a class="nav-item" href="{% url 'joinUs' %}">JOIN US</a>
         </div>
