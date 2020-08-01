@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="../static/base.css"> 
+=======
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+>>>>>>> b81441a5506271fd18b6fb23df286f9a1ef32cfb
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title>{% block title %}고려대학교 멋쟁이 사자처럼{% endblock title %}</title>
@@ -11,7 +15,7 @@
 </head>
 <body>
     <div class="nav-bar">
-        <a class="logo" href="{% url 'home' %}"><img src="../static/logo.png" alt="logo"></a>
+        <a class="logo" href="{% url 'home' %}"><img src="" alt="logo"></a>
         <div class="main-nav-bar">
             <a class="nav-item" href="{% url 'home' %}">HOME</a>
             <a class="nav-item" href="{% url 'about' %}">ABOUT</a>
@@ -50,11 +54,8 @@
             <div class="sns">
                 <a class="sns-item" href=""><img src="../static/facebook.svg" alt="facebook"></a>
                 <a class="sns-item" href=""><img src="../static/instagram.svg" alt="instagram"></a>
-            </div>
         </div>
-        <div class="copyright">Copyright © 2020 NEXT x LIKELION All rights reserved</div>
     </footer>
     <script src="../static/base.js"></script>
-    {% block js %}{% endblock js %}
 </body>
 </html>
