@@ -20,11 +20,16 @@ class TempMsUser(models.Model):
     idNumber = models.IntegerField()
 
 
+BOARD_TYPE = (
+    ("1", "공지사항"),
+    ("2", "세션")
+)
+
 class Post(models.Model):
     title = models.CharField(max_length =200)
     content = models.TextField()
     author = models.ForeignKey(MsUser, on_delete = models.CASCADE, related_name = 'posts')
-    category = models.TextField()
+    category = models.CharField(max_length = 10, choices = BOARD_TYPE, default = '공지사항')
     cover = models.TextField()
 
     def __str__(self):

@@ -90,7 +90,9 @@ def signup(request):
         auth.login(request,new_user)
         return redirect('home')
     
-    return render(request, 'registration/signup.html')
+
+    return render(request,'registration/signup.html')
+
 
 
 def logout(request):
@@ -100,45 +102,42 @@ def logout(request):
     return render (request, 'registration/signup.html')
 
 
+
+
 @login_required(login_url='/registration/login')
 def myPage(request):
     
     return render(request, 'myPage.html')
 
-def new(request):
-    if request.method == 'POST':
-        new_post = Post.objects.create(
-            title = request.POST['title'],
-            content = request.POST['content'],
-            author = request.MsUser,
-            category = request.POST['category']
-        )
-        return redirect('detail', new_post.pk)
 
-    return render(request, 'board.html')
 
 @login_required(login_url = '/registration.login')
-def edit(request):
+def notice_edit(request):
     post = Post.objects.get(pk=post_pk)
     if request.method == 'POST':
         Post.objects.filter(pk=post_pk).update(
-
             title = request.POST['title'],
             content = request.POST['content']
         )
-        return redirect('board_detail', post_pk)
+        return redirect('board_notice_detail', post_pk)
     
     return render(request, 'board_detail_edit.html', {'post':post })
 
+def session_edit(request):
+    post = Post.objects.get(pk=post_pk)
+    if request.method == 'POST':
+        Post.objects.filter(pk=post_pk).update(
+            title = request.POST['title'],
+            content = request.POST['content']
+        )
+        return redirect('board_session_detail', post_pk)
+    
+    return render(request, 'board_detail_edit.html', {'post': post })
 
 
-def board(request):
-    board_post = Post.objects.all()
-    return render(request, 'board.html', {'board_posts' : board_posts})
 
 
-
-def board_detail (request, post_pk):
+def notice_detail (request, post_pk):
     post = Post.objects.get(pk=post_pk)
 
     if request.method == 'POST':
@@ -147,8 +146,58 @@ def board_detail (request, post_pk):
             content = request.POST ['post'],
             author = request.user
         )
-        return redirect('board_detail', post_pk)
-    return render(request,'board_detail.html', {'post':post})
+        return redirect('board_notice_detail', post_pk)
+    return render(request,'board_notice_detail.html', {'post':post})
+
+def session_detail (request, post_pk):
+    post = Post.objects.get(pk=post_pk)
+    if request.method == 'POST':
+        Comment.objects.create(
+            post = post,
+            content = request.POST['post'],
+            author = request.user
+        )
+        return redirect('board_session_detail', post_pk)
+    return render(request, 'board_session_detail.html', {'post':post})
+
+
+
+def board_notice(request):
+    posts = Post.objects.get(category = "공지사항")
+    return render(request, 'board_notice.html', {'posts':posts})
+
+def board_session(request):
+    posts = Post.objects.get(category = "세션")
+    return render(request, 'board_session.html', {'posts':posts})
+
+
+def notice_new(request):
+    if request.method == 'POST':
+        new_post = Post.objects.create(
+            title = request.POST['title'],
+            content = request.POST['content'],
+            author = request.MsUser,
+            category = request.Post.category
+        )
+        return redirect('board_notice', new_post.pk)
+
+    return render(request, 'board_notice_new.html')
+
+
+
+def session_new(request):
+    if request.method == 'POST':
+        new_post = Post.objects.create(
+            title = request.POST['title'],
+            content = request.POST['content'],
+            author = request.MsUser,
+            category = request.Post.category
+        )
+        return redirect('board_session', new_post.pk)
+
+    return render(request, 'board_session_new.html') 
+
+
 
 @csrf_exempt
 def memberCheck(request):
@@ -203,7 +252,7 @@ def memberCheck(request):
             'major': sendMajor,
             'IdNumber': sendIdNumber
         }
-        
+        print(response)
         return HttpResponse(json.dumps(response)) 
         # response = {
         #     "members" : SendTempMsUser
