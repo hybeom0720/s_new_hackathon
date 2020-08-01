@@ -6,7 +6,7 @@ class MsUser(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null = False)
     name = models.TextField()
     kisoo = models.IntegerField(null = True, blank = True)
-    address = models.TextField()
+    email = models.TextField()
     major = models.TextField()
     idNumber = models.IntegerField()
     authority = models.TextField()
@@ -16,6 +16,7 @@ class Post(models.Model):
     title = models.CharField(max_length =200)
     content = models.TextField()
     author = models.ForeignKey(MsUser, on_delete = models.CASCADE, related_name = 'posts')
+    category = models.TextField()
     cover = models.TextField()
 
     def __str__(self):
