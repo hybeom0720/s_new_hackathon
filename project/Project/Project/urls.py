@@ -25,5 +25,6 @@ urlpatterns = [
     path('board/',views.board, name='board'),
     path('board/board_detail/<int:pk>', views.board_detail, name='board_detail'),
     path('', views.home, name = "home"),
-    path('memberCheck', views.memberCheck, name = "memberCheck")
+    path('memberCheck', views.memberCheck, name = "memberCheck"),
+    path('joinUs', views.joinUs, name = "joinUs")
 ]
