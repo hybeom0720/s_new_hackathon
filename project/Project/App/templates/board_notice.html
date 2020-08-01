@@ -9,21 +9,23 @@
         <th>작성자</th>
         <th>제목</th>
     </tr>
+
     <div class = table>
     {% for post in posts %}
     <tr>
         <td>{{ post.category }}</td>
         <td>{{ post.author }}</td>
-        <td><a href="{% url 'detail' %}">{{ post.title }}</a></td>
+        <td><a href="{% url 'notice_detail' %}">{{ post.title }}</a></td>
     </tr>
     {% endfor %}
     </div>
 </table>
-
 <input type ="text" class = "submittitle" name = "title" placeholder = "제목">
 <button class = "submitbutton" onclick = "search()">검색</button>
+<a href="{% url 'notice_new' %}">새로작성</a>
 
-    
+
+
 <script src ="https://unpkg.com/axios/dist/axios.min.js">
 const searchWord_raw = document.querySelector(".submittitle")
 const button = document.querySelecotr(".submitbutton")
@@ -53,5 +55,4 @@ const serach = () => {
 
 
 </script>
-
 {% endblock content %}>
