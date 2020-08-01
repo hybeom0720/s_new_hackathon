@@ -1,269 +1,226 @@
-body{
-    background-color : white;
-  }
-  
-  a{
-    text-decoration : none;
-    color : black;
-  }
-  
-  .nav-bar{
-    display : flex;
-    justify-content : space-between;
-    align-items : center;
-    background-color : #f2f2f2;
-    height : 50px;
-  }
-  
-  .nav-bar  .nav-item{
-    margin-right : 10px;
-  }
-  
-  
-  .user-name{
-    cursor : pointer;
-  }
-  
-  .member-option{
-    display : none;
-    flex-direction : column;
-    align-items : center;
-    position : absolute;
-    top : 15px;
-    right : 10px;
-    border : 1px solid;
-    text-align : center;
-    height : 65px;
-    width : 100px;
-    transform : scale(1);
-    transition : top 0.5s ease-in-out;
-    z-index : -10;
-  }
-  
-  
-  
-  .member-option > .nav-item{
-    margin-top : 10px;
-    
-  }
-  
-  
-  
-  
-  
-  /* 여기서부터 메인
-   */
-  
-  /* 메인박스 */
-  
-  .main-box{
-    background-color : black;
-    height : 250px;
-    display : flex;
-    padding : 20px;
-  }
-  
-  .main-content-box{
-    background-color : black;
-    color : white;
-    width : 500px;
-  }
-  
-  
-  .main-content-box > .one{
-    font-size : 15px;
-  }
-  
-  .main-content-box > .two{
-    font-size : 20px;
-    font-weight : 500;
-  }
-  
-  .main-content-box > .three{
-    font-size : 30px;
-    font-weight : 900;
-  }
-  
-  .main-img-box{
-    background-color : white;
-    width : 150px;
-    height : 150px;
-  }
-  
-  .main-img{
-    width : 150px;
-    height : 150px;
-  }
-  
-  /* 메인박스 끝 */
-  
-  
-  
-  
-  
-  .title-box{
-    height : 55px;
-    background-color : pink;
-    display : flex;
-    align-items : center;
-    padding-left : 20px;
-  }
-  
-  .title-content{
-    font-size : 20px;
-    font-weight : 600;
-  }
-  
-  
-  /* vision 시작 */
-  
-  .vision-box{
-    background-color : #f2f2f2;
-    height : 400px;
-    display : flex;
-    align-items : center;
-    justify-content : space-around;
-  }
-  
-  
-  .vision-item-img{
-    background-color : white;
-    width : 230px;
-    height : 230px;
-    border-radius : 50%;
-  }
-  
-  
-  .vision-item-content{
-    margin-top : 30px;
-    text-align : center;
-    line-height : 1.3;
-  }
-  
-  /* vision 끝 */
-  
-  
-  
-  /* stats 시작 */
-  .stats-box{
-    background-color : skyblue;
-    height : 200px;
-    padding : 40px;
-    display : flex;
-    justify-content : space-between;
-  }
-  
-  
-  .stats-content-box > .stats-content-item{
-    font-size : 20px;
-    font-weight : 600;
-  }
-  
-  .stats-content-box > .two{
-    font-weight : 100;
-    position : relative;
-    margin-top : 10px;
-  
-  }
-  
-  .stats-num-content{
-    margin-bottom : 10px;
-  }
-  
-  .stats-num{
-    display : inline;
-  }
-  
-  
-  .stats-img{
-    width : 150px;
-    height : 150px;
-  }
-  
-  /* stats 끝 */
-  /* activities 시작 */
-  
-  .activities-box{
-    background-color : gold;
-    height : 300px;
-    display : flex;
-    align-items : center;
-    justify-content : space-around;
-  }
-  
-  
-  .activities-item-img{
-    background-color : white;
-    width : 200px;
-    height : 200px;
-    border-radius : 50%;
-  }
-  
-  
-  .activities-item-content{
-    margin-top : 10px;
-    text-align : center;
-    line-height : 1.3;
-  }
-  
-  
-  /* activities 끝 */
-  
-  /* join us 시작 */
-  
-  
-  .joinUs-box{
-    background-color : lightgray;
-    height : 250px;
-    display : flex;
-    padding : 20px;
-  }
-  
-  .joinUs-content-box{
-    width : 500px;
-  }
-  
-  
-  .joinUs-content{
-    font-size : 20px;
-    font-weight : 700;
-  }
-  
-  .joinUs-button{
-    font-size : 20px;
-    font-weight : 700;
-    background-color : black;
-    color : white;
-  }
-  
-  
-  
-  .joinUs-img-box{
-    background-color : white;
-    width : 150px;
-    height : 150px;
-  }
-  
-  .joinUs-img{
-    width : 150px;
-    height : 150px;
-  }
-  
-  
-  /* join us 끝 */
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+html {
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 60%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+
+/* 메인박스 */
+
+.main-box {
+    background-image: url(./home_banner_background.png);
+    background-size: contain;
+    height: 450px;
+    display: flex;
+    padding: 80px 100px;
+    margin-bottom: 50px;
+}
+
+.main-content-box {
+    width: 580px;
+    height: 366px;
+    font-weight: 600;
+    line-height: 80px;
+    color: #000000;
+}
+
+.main-content-box>.one {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.main-content-box>.two {
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 60px;
+    margin-bottom: 10px;
+}
+
+.main-content-box>.three {
+    width: 330px;
+    height: 70px;
+    font-size: 30px;
+    font-weight: 900;
+    border-bottom: 10px solid black;
+}
+
+.main-img {
+    position: absolute;
+    width: 260.31px;
+    height: 274.37px;
+    left: 1000px;
+    top: 180px;
+    border-radius: 45px;
+    transform: rotate(5deg);
+}
+
+
+/* 메인박스 끝 */
+
+.title-box {
+    height: 120px;
+    display: flex;
+    align-items: center;
+}
+
+.title-content {
+    font-size: 35px;
+    font-weight: 400;
+    padding-left: 30px;
+}
+
+
+/* vision 시작 */
+
+.vision-box {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.vision-item-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vision-item-img img {
+    margin: 0 auto;
+}
+
+.vision-item-content {
+    color: gray;
+    margin-top: 30px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+
+/* vision 끝 */
+
+
+/* stats 시작 */
+
+.stats-box {
+    background-color: rgb(245, 245, 245);
+    height: 400px;
+    padding: 40px 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 50px;
+}
+
+.stats-content-box>.stats-content-item {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.stats-content-box>.two {
+    font-weight: 100;
+    position: relative;
+    margin-top: 10px;
+}
+
+.stats-num-content {
+    margin-bottom: 10px;
+}
+
+.stats-num {
+    display: inline;
+}
+
+.stats-img {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 1100px;
+    top: 1500px;
+}
+
+
+/* stats 끝 */
+
+
+/* activities 시작 */
+
+.activities-box {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.activities-item-img {
+    background-image: url(../static/0606_hackaton.jpeg);
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.activities-item-content {
+    font-size: 20px;
+    margin-top: 30px;
+    text-align: center;
+    line-height: 1.3;
+}
+
+
+/* activities 끝 */
+
+
+/* join us 시작 */
+
+.joinUs-box {
+    background-color: rgb(245, 245, 245);
+    height: 250px;
+    display: flex;
+    align-items: center;
+    padding: 50px 80px;
+}
+
+.joinUs-content-box {
+    width: 400px;
+}
+
+.joinUs-content {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    line-height: 60px;
+}
+
+.joinUs-button {
+    font-size: 20px;
+    font-weight: 700;
+    background-color: black;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.joinUs-img {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    left: 1100px;
+    top: 2600px;
+}
+
+
+/* join us 끝 */
