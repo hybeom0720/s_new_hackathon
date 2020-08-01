@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+
+{% block content %}
+{% if user.is_authenticated and post.author.pk == user.pk %}
+    <a href="{% url 'edit' post.pk }">수정하기</a>
+    <a href="{% url 'delete' post.pk }">삭제하기</a>
+{% endif %}
+
+
+<div>{{post}}</div>
+
+{% if user.is_authenticated %}
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name= "content" placeholder="댓글을 입력하세요">
+        <button type="submit">댓글쓰기</button>
+    </form>
+
+{% for comment in comments %}
+    <li>{{comment.content}}</li>
+
+    {% if user.is_authenticated and comment.author.pk == user.pk %}
+    <a href="{% url 'delete_comment' post.pk comment.pk%}">댓글삭제</a>
+    {% endif %}
+{% endfor %}
+
+{% endblock content %}

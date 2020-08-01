@@ -4,6 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <title>{% block title %}고려대학교 멋쟁이 사자처럼{% endblock title %}</title>
     {% block css %}{% endblock css %}
 </head>
@@ -30,24 +36,34 @@
             </div>
             {% else %}
             <a class="nav-item" href="{% url 'login' %}">LOGIN</a>
+            <a class="nav-item" href="{% url 'signup' %}">회원가입</a>
             {% endif %}
         </div>
     </div>
+    {% if user.is_authenticated %}
+    <div class="member-option">
+        <a class="nav-item" href="{% url 'mypage' %}">마이페이지</a>
+        <a class="nav-item" href="{% url 'logout' %}">로그아웃</a>
+    </div>
+    {% endif %}
     {% block content %}
     {% endblock content %}
     <footer>
-        <div class="contact">
-            <h3>CONTACT US</h3>
-            <p class="president"><img src="" alt="president">조성우</p>
-            <p class="address"><img src="" alt="address">서울시 성북구 안암로 145, 고려대학교</p>
-            <p class="tel"><img src="" alt="tel">010-0000-0000</p>
-            <p class="email"><img src="" alt="email">000@likelion.org</p>
-        </div>
-        <div class="sns">
-            <a class="facebook" href=""><img src="" alt="facebook"></a>
-            <a class="instagram" href=""><img src="" alt="instagram"></a>
-        </div>
+        <div class="footer_item">
+            <img class="logo_white" src="../static/logo_white.png" alt="logo_white">
+            <div class="contact">
+                <h3>CONTACT</h3>
+                <p class="contact-item"><img src="../static/president.svg" alt="president">조성우</p>
+                <p class="contact-item"><img src="../static/address.svg" alt="address">서울시 성북구 안암로 145, 고려대학교 경영대학</p>
+                <p class="contact-item"><img src="../static/tel.svg" alt="tel">010-3146-1147</p>
+                <p class="contact-item"><img src="../static/email.svg" alt="email">nextlikelion@likelion.org</p>
+            </div>
+            <div class="sns">
+                <a class="sns-item" href=""><img src="../static/facebook.svg" alt="facebook"></a>
+                <a class="sns-item" href=""><img src="../static/instagram.svg" alt="instagram"></a>
+            </div>
     </footer>
+    <script src="../static/base.js"></script>
 </body>
 
 </html>

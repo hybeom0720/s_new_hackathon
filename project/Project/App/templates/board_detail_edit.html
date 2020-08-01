@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    <div>
+        <label>제목</label>
+        <input type="text" name="title" value="{{post.title}}" placeholder="제목을 입력해주세요">
+    </div>
+
+    <div>
+        <label>내용</label>
+        <textarea name="content" cols="30" rows="10">{{post.content}}</textarea>
+    </div>
+    
+
+
+</form>
+
+{% endblock content %}
