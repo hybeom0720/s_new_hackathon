@@ -21,17 +21,21 @@ TEMP_DIR = os.path.join(BASE_DIR, "app", "DataBase", "MemberDataBase.csv")
 # Create your views here.
 
 def home(request):
-    
     return render(request, 'home.html')
 
 def about(request):
     return render(request, 'about.html')
 
 def activities(request):
-    return render(request, "activities.html")
 
+    return render(request, 'activities.html')
+    
+def members(request):
+    return render(request, 'members.html')
+    
 def joinUs(request):
-    return render(request, "joinUs.html")
+    return render(request, 'joinUs.html')
+
 
 def login(request):
     if request.method == 'POST':
@@ -120,7 +124,7 @@ def notice_edit(request):
             title = request.POST['title'],
             content = request.POST['content']
         )
-        return redirect('board_notice_detail', post_pk)
+        return redirect('board_notice_detail.html', post_pk)
     
     return render(request, 'board_detail_edit.html', {'post':post })
 
@@ -143,8 +147,10 @@ def board(request):
 
 def board_notice(request):
 
+
     # if request.method != "POST": 
     if request.method == "POST":
+
         request_body = json.loads(request.body)
         searchWord = request_body["searchWord"]
         posts = Post.objects.filter(category= "공지사항")
@@ -193,9 +199,8 @@ def session_detail (request, post_pk):
     return render(request, 'board_session_detail.html', {'post':post})
 
 
-# def board_notice(request):
-#     posts = Post.objects.get(category = "공지사항")
-#     return render(request, 'board_notice.html', {'posts':posts})
+
+
 
 def board_session(request):
     posts = Post.objects.filter(category = "세션")
@@ -295,8 +300,9 @@ def memberCheck(request):
     # return render(request.memberCheck.html)
 
 
-@login_required(login_url='/registration/login')
+# @login_required(login_url='/registration/login')
 def joinUs(request):
+    print("난 삶이 힘들 떄 자바를 해")
     if request.method == 'POST':
         file_to_upload = request.FILES.get('file')
         session = Session(

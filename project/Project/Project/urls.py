@@ -19,16 +19,24 @@ from App import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.home, name="home"),
+    path('about/',views.about, name="about"),
+    path('activities/',views.activities, name="activities"),
+    path('members/',views.members, name="members"),
+    path('joinUs/',views.joinUs, name="joinUs"),
+  
     path('registration/signup/',views.signup, name="signup" ),
     path('registration/login/', views.login, name="login"),
     path('registration/logout', views.logout, name="logout"),
     
     # path('board/',views.board, name='board'),
     # path('board/board_detail/<int:pk>', views.board_detail, name='board_detail'),
-    path('', views.home, name = "home"),
     path('memberCheck', views.memberCheck, name = "memberCheck"),
+
+
     path('board_notice',views.board_notice, name = 'board_notice'),
     path('board_session', views.board_session, name = 'board_session'),
+
     path('board_session/detail/<int:post_pk>', views.session_detail, name = 'session_detail'),
     path('board_notice/detail/<int:post_pk>',views.notice_detail, name = 'notice_detail'),
     path('board_notice/edit/<int:post_pk>',views.notice_edit, name = 'notice_edit'),
@@ -39,4 +47,7 @@ urlpatterns = [
     path("joinUS", views.joinUs, name = "joinUs"),
     path('mypage', views.myPage, name ="mypage"),
     # path('board_notice', views.board_notice, name ="board_notice")
+
+ 
+
 ]

@@ -1,7 +1,69 @@
 {% extends 'base.html' %}
 {% block title %}{% endblock title %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'activities.css' %}">
+<link rel="stylesheet"  type="text/css" href="../static/activities.css">
+
+
 
 {% block content %}
+<main>
+   <div class="main-box">
+     <h2 class="main-title">ACTIVITIES</h2>
+     <div class="main-content-box box-one">
+     </div>
+      <div class="main-content content-one">
+          online 
+          </br>&
+          </br>offline
+          </br>sessions
+      </div>
+     <div class="main-content-box box-two">
+     </div>
+     <div class="main-content content-two">
+         Hackathons
+     </div>
+     <div class="main-content-box box-three">
+
+     </div>
+      <div class="main-content content-three">
+         startups
+        </br>&
+        </br>service
+        </br>launch
+     </div>
+   </div>
+    
+  <div class="acitivity-img img-one">
+    <div class="img-content ic-one">
+      운영진들이 제공하는
+      </br>높은 퀄리티의 수업을
+      </br>온라인 및 오프라인 
+     </br>정기세션을 통해 배움으로써, 
+      </br>실력과 협업능력을 기릅니다.
+    </div>
+  </div>
+
+  <div class="acitivity-img img-two">
+   <div class="img-content ic-two">
+       정기적인 해커톤을 통해
+     </br>배운 내용들을 정리하고,
+     </br>내손으로 직접 서비스를 만들며
+     </br>팀원들간의 유대감을 쌓습니다.
+   </div>
+  </div>
+
+  <div class="acitivity-img img-three">
+    <div class="img-content ic-three">
+       창업세션, 특별세션 등을 통해
+      </br>지식과 경험들을 쌓고,
+      </br>선배들과의 대화의 장을
+      </br>도모할 수 있습니다.
+    </div>
+  </div>
+
+
+    
+  </main>
+  
+  <script src="../static/activities.js"></script>
 {% endblock content %}

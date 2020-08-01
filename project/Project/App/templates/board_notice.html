@@ -16,13 +16,14 @@
         <td>{{ post.category }}</td>
         <td>{{ post.author }}</td>
         <td><a href="{% url 'notice_detail' post.pk %}">{{ post.title }}</a></td>
+
     </tr>
     {% endfor %}
     </div>
 </table>
 <input type ="text" class = "submittitle" name = "title" placeholder = "제목">
 <button class = "submitbutton" onclick = "search()">검색</button>
-<a href="{% url 'notice_new' %}">새로작성</a>
+<!-- <a href="{% url 'notice_new' %}">새로작성</a> -->
 
 
 
@@ -42,7 +43,7 @@ const search = () => {
                                 `<td>`+response.data.category[index]+`</td>`+
                                 `<td>`+response.data.author[index]+`</td>`+
                                 `<td>`+response.data.title[index]+`</td>`+
-                                
+
                             `</tr>`
         }
         newElement += `</div>`
