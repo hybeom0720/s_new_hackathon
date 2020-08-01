@@ -2,12 +2,16 @@
   <defs>
     <style>
       .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
         fill: none;
       }
     </style>
   </defs>
-  <g id="그룹_3" data-name="그룹 3" transform="translate(-126 -2746)">
-    <path id="ic_place_24px" d="M12,2A7,7,0,0,0,5,9c0,5.25,7,13,7,13s7-7.75,7-13A7,7,0,0,0,12,2Zm0,9.5A2.5,2.5,0,1,1,14.5,9,2.5,2.5,0,0,1,12,11.5Z" transform="translate(124 2744)"/>
-    <rect id="사각형_3" data-name="사각형 3" class="cls-1" width="20" height="20" transform="translate(126 2746)"/>
+  <g id="address" transform="translate(-126 -2746)">
+    <path id="ic_place_24px" class="cls-1" d="M12,2A7,7,0,0,0,5,9c0,5.25,7,13,7,13s7-7.75,7-13A7,7,0,0,0,12,2Zm0,9.5A2.5,2.5,0,1,1,14.5,9,2.5,2.5,0,0,1,12,11.5Z" transform="translate(124 2744)"/>
+    <rect id="사각형_3" data-name="사각형 3" class="cls-2" width="20" height="20" transform="translate(126 2746)"/>
   </g>
 </svg>
