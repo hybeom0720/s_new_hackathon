@@ -43,9 +43,9 @@ def login(request):
         )
         if found_user is None:
             error = '아이디 또는 비밀번호가 틀렸습니다.'
-            return render(request, 'registartion/login.html')
+            return render(request, 'registration/login.html')
         
-        auth.authenticate(
+        auth.login(
             request, 
             found_user,
             backend = 'django.contrib.auth.backends.ModelBackend')
