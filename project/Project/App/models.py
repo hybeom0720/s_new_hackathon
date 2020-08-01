@@ -23,7 +23,6 @@ class Post(models.Model):
     content = models.TextField()
     author = models.ForeignKey(MsUser, on_delete = models.CASCADE, related_name = 'posts')
     category = models.TextField()
-    cover = models.TextField()
 
     def __str__(self):
         return self.title
