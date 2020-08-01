@@ -39,9 +39,9 @@ urlpatterns = [
 =======
     path('board_notice',views.board_notice, name = 'board_notice'),
     path('board_session', views.board_session, name = 'board_session'),
-    path('board_session/detail/<int:pk>', views.session_detail, name = 'session_detail'),
-    path('board_notice_detail/<int:pk>',views.notice_detail, name = 'notice_detail'),
-    path('board_notice/edit/<int:pk>',views.notice_edit, name = 'notice_edit'),
+    path('board_session/detail/<int:post_pk>', views.session_detail, name = 'session_detail'),
+    path('board_notice_detail/<int:post_pk>',views.notice_detail, name = 'notice_detail'),
+    path('board_notice/edit/<int:post_pk>',views.notice_edit, name = 'notice_edit'),
     path('board_notice/new',views.notice_new,name="notice_new"),
     path('board_session/new',views.session_new,name="session_new"),
 >>>>>>> 4be072a73a4e11a3d49c9e9c8999ccc97a69718b
