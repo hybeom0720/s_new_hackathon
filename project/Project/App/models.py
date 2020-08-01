@@ -11,12 +11,14 @@ class MsUser(models.Model):
     idNumber = models.IntegerField()
     authority = models.TextField()
 
+
 class TempMsUser(models.Model):
     name = models.TextField()
     kisoo = models.IntegerField(null = True, blank = True)
     email = models.TextField()
     major = models.TextField()
     idNumber = models.IntegerField()
+
 
 class Post(models.Model):
     title = models.CharField(max_length =200)
@@ -28,7 +30,6 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete = models.CASCADE, related_name = 'comments')
     content = models.TextField()
