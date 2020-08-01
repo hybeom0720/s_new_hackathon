@@ -6,16 +6,16 @@
 
 
 {% block content %}
-<h1>로그인</h1>
+<h1>LOG IN</h1>
 {% if error %}
 <h3 style="color: red;">{{error}}</h3>
 {% endif %}
 
 <form method="POST">
     {% csrf_token %}
-    <input id="input" type="text" name="username" placeholder="아이디">
-    <input id="input" type="password" name="password" placeholder="비밀번호">
-    <button type="submit ">로그인 </button>
+    <input id="input" type="text" name="username" placeholder="ID">
+    <input id="input" type="password" name="password" placeholder="PW">
+    <button id="button" type="submit "> GO </button>
 
 </form>
 
