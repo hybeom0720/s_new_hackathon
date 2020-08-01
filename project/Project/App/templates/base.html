@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+    <link rel="stylesheet" type="text/css" href="../static/base.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link
@@ -40,12 +41,6 @@
             {% endif %}
         </div>
     </div>
-    {% if user.is_authenticated %}
-    <div class="member-option">
-        <a class="nav-item" href="{% url 'mypage' %}">마이페이지</a>
-        <a class="nav-item" href="{% url 'logout' %}">로그아웃</a>
-    </div>
-    {% endif %}
     {% block content %}
     {% endblock content %}
     <footer>
