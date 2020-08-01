@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import MsUser, TempMsUser, Post, Comment, Like
 from django.contrib.auth.models import User
-from Project.settings import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, AWS_S3_REGION_NAME
+# from Project.settings import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, AWS_S3_REGION_NAME
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
@@ -107,7 +107,7 @@ def logout(request):
 @login_required(login_url='/registration/login')
 def myPage(request):
     
-    return render(request, 'myPage.html')
+    return render(request, 'mypage.html')
 
 
 
@@ -119,7 +119,7 @@ def notice_edit(request):
             title = request.POST['title'],
             content = request.POST['content']
         )
-        return redirect('board_notice_detail', post_pk)
+        return redirect('board_notice_detail.html', post_pk)
     
     return render(request, 'board_detail_edit.html', {'post':post })
 
@@ -142,12 +142,14 @@ def board(request):
 
 def board_notice(request):
     if request.method != "POST":
-        posts = Post.objects.get(category = "공지사항")
+        # posts = Post.objects.filter(category = "공지사항")
+        posts = Post.objects.all()
         return render(request, 'board_notice.html', {'posts':posts})
+
     elif request.method == "POST":
         request_body = json.loads(request.body)
         searchWord = request_body["searchWord"]
-        posts = Post.objects.get(category= "공지사항")
+        posts = Post.objects.filter(category= "공지사항")
         sendPostCategory = []
         sendPostAuthor = []
         sendPostTitle = []
@@ -192,12 +194,10 @@ def session_detail (request, post_pk):
 
 
 
-def board_notice(request):
-    posts = Post.objects.get(category = "공지사항")
-    return render(request, 'board_notice.html', {'posts':posts})
+
 
 def board_session(request):
-    posts = Post.objects.get(category = "세션")
+    posts = Post.objects.filter(category = "세션")
     return render(request, 'board_session.html', {'posts':posts})
 
 
