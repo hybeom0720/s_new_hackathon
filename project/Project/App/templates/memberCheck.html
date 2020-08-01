@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "showingGisoo">
+        <form>
+        <select class = 'Gisoo'>
+            {% for gisooNumber in Gisoo %}
+            <option  class = "order" value = "{{gisooNumber}}" >{{gisooNumber}}</option>
+            {% endfor %}
+        </select>
+        </form>
+    </div>
+    <div class = "memberInfo">
+        <div class = "basicInfo">
+            {% for member in members %}
+                <div class = "{{member.name}}">
+                    {{member.name}}
+                    {{member.kisoo}}
+                    {{member.email}}
+                    {{member.major}}
+                    {{member.idNumber}}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src ="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        option = document.querySelector(".Gisoo")
+
+        console.log(option)
+        const check = () =>{
+            const sub = document.querySelector(".basicInfo")
+            axios.post("/memberCheck", {js_gisoo: event.target.value}).then(response=>{
+                let newElement = `<div class = "basicInfo">`
+                var setNumber = response.data.name.length
+
+                for(index= 0; index<setNumber;index++){
+                    console.log(response.data.name[index])
+                    newElement += `<div class = "`+response.data.name[index]+`">`+
+                                        response.data.name[index]+
+                                        response.data.kisoo[index]+
+                                        response.data.email[index]+
+                                        response.data.major[index]+
+                                        response.data.IdNumber[index]+
+                                    `</div>`
+                    console.log(newElement)
+                }
+                newElement += `</div>`
+
+                sub.insertAdjacentHTML("afterend", newElement)
+                sub.remove()
+            })
+            .catch(error=>console.error(error))
+        }
+        option.addEventListener("change", check)
+        
+    </script>
+
+
+</body>
+</html>
+
