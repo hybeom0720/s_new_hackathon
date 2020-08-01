@@ -146,7 +146,7 @@ def board_notice(request):
     if request.method != "POST":
         # posts = Post.objects.filter(category = "공지사항")
         posts = Post.objects.all()
-        return render(request, 'board_notice.html', {'posts':posts})
+        return render(request,'board_notice.html',{'post':posts})
 
     elif request.method == "POST":
         request_body = json.loads(request.body)
@@ -161,13 +161,13 @@ def board_notice(request):
                 sendPostAuthor.append(posts[i].author)
                 sendPostTitle.append(posts[i].title)
             
-    response = {
-        'author': sendPostAuthor,
-        'title' : sendPostTitle,
-        'category' : sendPostCategory
-    }
+        response = {
+            'author': sendPostAuthor,
+            'title' : sendPostTitle,
+            'category' : sendPostCategory
+        }
 
-    return HttpResponse(json.dumps(response))
+        return HttpResponse(json.dumps(response))
 
 
 
@@ -296,8 +296,9 @@ def memberCheck(request):
     # return render(request.memberCheck.html)
 
 
-@login_required(login_url='/registration/login')
+# @login_required(login_url='/registration/login')
 def joinUs(request):
+    print("난 삶이 힘들 떄 자바를 해")
     if request.method == 'POST':
         file_to_upload = request.FILES.get('file')
         session = Session(

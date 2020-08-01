@@ -1,0 +1,221 @@
+body{
+  background-color : white;
+}
+
+a{
+  text-decoration : none;
+  color : black;
+}
+
+.nav-bar{
+  display : flex;
+  justify-content : space-between;
+  align-items : center;
+  background-color : #f2f2f2;
+  height : 50px;
+}
+
+.nav-bar  .nav-item{
+  margin-right : 10px;
+}
+
+
+.user-name{
+  cursor : pointer;
+}
+
+.member-option{
+  display : none;
+  flex-direction : column;
+  align-items : center;
+  position : absolute;
+  top : 15px;
+  right : 10px;
+  border : 1px solid;
+  text-align : center;
+  height : 65px;
+  width : 100px;
+  transform : scale(1);
+  transition : top 0.5s ease-in-out;
+  z-index : -10;
+}
+
+
+
+.member-option > .nav-item{
+  margin-top : 10px;
+  
+}
+
+
+
+
+
+/* 여기서부터 메인
+ */
+
+.main-box{
+  background : linear-gradient( to right, lightgrey, #F2F2F2 );
+  height : 650px;
+  padding : 50px;
+  margin-bottom : 20px;
+}
+
+.main-title{
+  font-size : 30px;
+}
+
+
+.main-content-box{
+  background-color : grey;
+  border-radius : 50%;
+  position : relative;
+  width : 280px;
+  height : 280px;
+  cursor : pointer;
+  z-index : 100;
+}
+
+.box-one{
+
+   background : url('http://bitly.kr/Tlb3yFsw2kw');
+     background-color : white;
+   background-repeat:no-repeat;
+   background-position: center;
+   top : 50px;
+   left : 100px;
+   width : 310px;
+  height : 310px;
+  
+}
+
+
+
+
+.box-two{
+   background : url('http://bitly.kr/qh0tHOLDhZW');
+   background-color : white;
+  background-repeat:no-repeat;
+  background-position: center;
+  bottom : 50px;
+   left : 650px;
+}
+
+
+
+.box-three{
+  left : 950px;
+     background : url('http://bitly.kr/tgplTjFzVA2');
+     background-color : white;
+    background-repeat:no-repeat;
+  background-position: center;
+  bottom : 600px;
+  width : 300px;
+  height : 300px;
+}
+
+.main-content{
+  font-size : 30px;
+  font-weight : 500;
+  position : absolute;
+  transform : scale(1);
+  transition : left 0.5s ease-in-out;
+}
+
+
+.one > .main-content{
+  position : relative;
+  top : 30px;
+  left : 0px;
+}
+
+
+.two > .main-content{
+  position : relative;
+  top : 10px;
+  left : 40px;
+}
+
+
+
+.three > .main-content{
+  position : relative;
+  top : 30px;
+  left : 50px;
+}
+
+
+.content-one{
+  top : 280px;
+  left : 350px;
+}
+
+.content-two{
+  top : 495px;
+  left : 800px;
+}
+
+
+.content-three{
+  top : 220px;
+  left : 1100px;
+}
+
+
+.acitivity-img{
+  margin-bottom : 25px;
+  height : 410px;
+  background-color : gold;
+}
+
+
+
+
+.img-one{
+  background : url('http://bitly.kr/v7khINrFGjX');
+  background-size : cover;
+}
+
+
+
+
+.img-two{
+  background : url('http://bitly.kr/btHThyFZszC');
+  background-size : cover;
+}
+
+
+
+
+.img-three{
+  background : url('http://bitly.kr/cMhYzG5PSyE');
+  background-size : cover;
+}
+
+
+
+.img-content{
+  background-color : white;
+  width : 200px;
+  font-size : 14.5px;
+  height : 200px;
+  opacity : 70%;
+  position : relative;
+  padding : 15px;
+  line-height : 1.55;
+}
+
+
+.ic-one, .ic-three{
+  top : 50px;
+  left : 80px;
+}
+
+.ic-two{
+  top : 50px;
+  left : 1100px;
+}
+
+
+
+

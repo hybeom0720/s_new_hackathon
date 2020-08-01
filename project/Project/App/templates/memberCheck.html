@@ -8,6 +8,12 @@
 <div class="showingGisoo">
     <form>
         <select class='Gisoo'>
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+
             {% for gisooNumber in Gisoo %}
             <option class="order" value="{{gisooNumber}}">{{gisooNumber}}</option>
             {% endfor %}
@@ -62,7 +68,5 @@
 </script>
 
 
-
-{% block content %}
 
 {% endblock content %}
