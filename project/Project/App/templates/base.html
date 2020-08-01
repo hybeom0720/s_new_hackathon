@@ -1,17 +1,21 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../static/base.css"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title>{% block title %}고려대학교 멋쟁이 사자처럼{% endblock title %}</title>
     {% block css %}{% endblock css %}
 </head>
+
 <body>
     <div class="nav-bar">
-        <a class="logo" href="{% url 'home' %}"><img src="" alt="logo"></a>
+        <a class="logo" href="{% url 'home' %}"><img src="../static/logo.png" alt="logo"></a>
         <div class="main-nav-bar">
             <a class="nav-item" href="{% url 'home' %}">HOME</a>
             <a class="nav-item" href="{% url 'about' %}">ABOUT</a>
@@ -22,11 +26,12 @@
         </div>
         <div class="member-nav-bar">
             {% if user.is_authenticated %}
-            <div class="nav-item user-name"><p>멋쟁이 USER님</p></div>
+            <div class="nav-item user-name">
+                <p>멋쟁이 USER님</p>
+            </div>
             {% else %}
             <a class="nav-item" href="{% url 'login' %}">LOGIN</a>
-            <a class="nav-item" href="{% url 'signup' %}">회원가입</a>
-            {% endif %}
+            <a class="nav-item" href="{% url 'signup' %}">회원가입</a> {% endif %}
         </div>
     </div>
     {% if user.is_authenticated %}
@@ -34,9 +39,7 @@
         <a class="nav-item" href="{% url 'mypage' %}">마이페이지</a>
         <a class="nav-item" href="{% url 'logout' %}">로그아웃</a>
     </div>
-    {% endif %}
-    {% block content %}
-    {% endblock content %}
+    {% endif %} {% block content %} {% endblock content %}
     <footer>
         <div class="footer_item">
             <img class="logo_white" src="../static/logo_white.png" alt="logo_white">
@@ -50,8 +53,12 @@
             <div class="sns">
                 <a class="sns-item" href=""><img src="../static/facebook.svg" alt="facebook"></a>
                 <a class="sns-item" href=""><img src="../static/instagram.svg" alt="instagram"></a>
+            </div>
         </div>
+        <div class="copyright">Copyright © 2020 NEXT x LIKELION All rights reserved</div>
     </footer>
     <script src="../static/base.js"></script>
+    {% block js %}{% endblock js %}
 </body>
+
 </html>

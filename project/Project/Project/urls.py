@@ -19,11 +19,15 @@ from App import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('registration/signup/',views.signup, name="signup" ),
-    path('registration/login/', views.login, name="login"),
-    path('registration/logout', views.logout, name="logout"),
+    path('', views.home, name="home"),
+    path('about/',views.about, name="about"),
+    path('activities/',views.activities, name="activities"),
+    path('members/',views.members, name="members"),
     path('board/',views.board, name='board'),
     path('board/board_detail/<int:pk>', views.board_detail, name='board_detail'),
-    path('', views.home, name = "home"),
+    path('joinUs/',views.joinUs, name="joinUs"),
+    path('registration/signup/',views.signup, name="signup"),
+    path('registration/login/', views.login, name="login"),
+    path('registration/logout', views.logout, name="logout"),
     path('memberCheck', views.memberCheck, name = "memberCheck")
 ]
