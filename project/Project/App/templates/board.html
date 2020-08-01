@@ -4,4 +4,12 @@
 <link rel="stylesheet" type="text/css" href="{% static 'board.css' %}">
 
 {% block content %}
+<ul>
+    {% for board_post in board_posts %}
+            <li><a href="{% url 'board_detail' post.pk %}">{{ board_post }}</a> </li>       
+    {% endfor%}
+</ul>
+
+
+
 {% endblock content %}
