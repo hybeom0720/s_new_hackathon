@@ -1,25 +1,40 @@
 {% extends 'base.html' %}
+<link rel="stylesheet" type="text/css" href="/App/static/memberCheck.css">
+<link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 
 {% block content %}
+<main>
+    <!--   mainbox 시작 -->
+    <div class="main-box">
+        <div class="main-content-box">
 
-{% if user.is_authenticated and post.author.pk == user.pk %}
+            <div class="main-content-item one">MEMBERS</div>
+            <div class="main-content-item two">멋쟁이 사자처럼</br>고려대학교의<br>멤버를 소개합니다</div>
+            <div class="main-content-item three">1기~8기</div>
+        </div>
+    </div>
+
+    {% if user.is_authenticated and post.author.pk == user.pk %}
     <a href="{% url 'session_edit' post.pk %}">수정하기</a>
     <a href="{% url 'delete' post.pk %}">삭제하기</a>
-{% endif %}
+    {% endif %}
 
-{% if user.is_authenticated %}
+    {% if user.is_authenticated %}
     <form method="POST">
         {% csrf_token %}
-        <input type="text" name= "content" placeholder="댓글을 입력하세요">
+        <input type="text" name="content" placeholder="댓글을 입력하세요">
         <button type="submit">댓글쓰기</button>
     </form>
 
- {% for comment in comments %}
+    {% for comment in comments %}
     <li>{{comment.content}}</li>
 
     {% if user.is_authenticated and comment.author.pk == user.pk %}
     <a href="{% url 'delete_comment' post.pk comment.pk%}">댓글삭제</a>
     {% endif %}
-{% endfor %}
+    {% endfor %}
+</main>
 
 {% endblock content %}
