@@ -26,5 +26,7 @@ urlpatterns = [
     path('board/board_detail/<int:pk>', views.board_detail, name='board_detail'),
     path('', views.home, name = "home"),
     path('memberCheck', views.memberCheck, name = "memberCheck"),
-    path("about", views.about, name = "about")
+    path("about", views.about, name = "about"),
+    path("activities", views.activities, name = "activities"),
+    path("joinUS", views.joinUs, name = "joinUs")
 ]

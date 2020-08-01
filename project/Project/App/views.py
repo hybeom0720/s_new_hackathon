@@ -19,7 +19,13 @@ def home(request):
     return render(request, 'home.html')
 
 def about(request):
-    return about(request, 'about.html')
+    return render(request, 'about.html')
+
+def activities(request):
+    return render(request, "activities.html")
+
+def joinUs(reqeuest):
+    return render(request, "joinUs.html")
 
 def login(request):
     if request.method == 'POST':
