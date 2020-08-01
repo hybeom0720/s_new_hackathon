@@ -19,9 +19,11 @@
         </div>
         <div class="member-nav-bar">
             {% if user.is_authenticated %}
-            <div class="nav-item"><p>안녕하세요, 멋쟁이 {{ user.username }}님</p></div>
-            <a class="nav-item" href="{% url 'mypage' %}">마이페이지</a>
-            <a class="nav-item" href="{% url 'logout' %}">로그아웃</a>
+            <div class="nav-item"><p>멋쟁이 {{ user.username }}님</p></div>
+            <div class="member-option">
+                <a class="nav-item" href="{% url 'mypage' %}">마이페이지</a>
+                <a class="nav-item" href="{% url 'logout' %}">로그아웃</a>
+            </div>
             {% else %}
             <a class="nav-item" href="{% url 'login' %}">LOGIN</a>
             {% endif %}

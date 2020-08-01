@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="그룹_5" data-name="그룹 5" transform="translate(-981 -3610)">
+    <path id="ic_local_post_office_24px" d="M20,4H4A2,2,0,0,0,2.01,6L2,18a2.006,2.006,0,0,0,2,2H20a2.006,2.006,0,0,0,2-2V6A2.006,2.006,0,0,0,20,4Zm0,4-8,5L4,8V6l8,5,8-5Z" transform="translate(979 3608)"/>
+    <rect id="사각형_5" data-name="사각형 5" class="cls-1" width="20" height="20" transform="translate(981 3610)"/>
+  </g>
+</svg>
