@@ -28,5 +28,6 @@ urlpatterns = [
     path('memberCheck', views.memberCheck, name = "memberCheck"),
     path("about", views.about, name = "about"),
     path("activities", views.activities, name = "activities"),
-    path("joinUS", views.joinUs, name = "joinUs")
+    path("joinUS", views.joinUs, name = "joinUs"),
+    path('mypage', views.myPage, name ="mypage")
 ]
