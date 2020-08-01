@@ -6,20 +6,20 @@
 
 
 {% block content %}
-<h1>회원가입</h1>
+<h1>SIGN UP</h1>
 {% if error %}
 <h3 style="color: red;">{{error}}</h3>
 {% endif %}
 
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder="아이디">
-        <input type="password" name="password" placeholder="비밀번호">
-        <input type="text" name="name" placeholder="이름">
-        <input type="number" name="kisoo" placeholder="멋사 활동 기수를 입력해주세요">
-        <input type="text" name="email" placeholder=이메일>
-        <input type="text" name="major" placeholder="학과">
-        <input type="text" name="idNumber" placeholder="학번">
-        <button type = "submit"> 제출</button>
-    </form>
+<form method="POST">
+    {% csrf_token %}
+    <input id="input" type="text" name="username" placeholder="ID">
+    <input id="input" type="password" name="password" placeholder="PW">
+    <input id="input" type="text" name="name" placeholder="NAME">
+    <input id="input" type="number" name="kisoo" placeholder="CLASS">
+    <input id="input" type="text" name="email" placeholder="E-MAIL">
+    <input id="input" type="text" name="major" placeholder="MAJOR">
+    <input id="input" type="text" name="idNumber" placeholder="STUDEN NUM">
+    <button id="button" type="submit"> BECOME LION </button>
+</form>
 {% endblock content %}
