@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import MsUser, TempMsUser, Post, Comment, Like
 from django.contrib.auth.models import User
-from Project.settings import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, AWS_S3_REGION_NAME
+# from Project.settings import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, AWS_S3_REGION_NAME
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
@@ -21,17 +21,19 @@ TEMP_DIR = os.path.join(BASE_DIR, "app", "DataBase", "MemberDataBase.csv")
 # Create your views here.
 
 def home(request):
-    
     return render(request, 'home.html')
 
 def about(request):
     return render(request, 'about.html')
 
 def activities(request):
-    return render(request, "activities.html")
-
-def joinUs(reqeuest):
-    return render(request, "joinUs.html")
+    return render(request, 'activities.html')
+    
+def members(request):
+    return render(request, 'members.html')
+    
+def joinUs(request):
+    return render(request, 'joinUs.html')
 
 def login(request):
     if request.method == 'POST':
@@ -90,7 +92,9 @@ def signup(request):
         auth.login(request,new_user)
         return redirect('home')
     
-    return render(request, 'registration/signup.html')
+
+    return render(request,'registration/signup.html')
+
 
 
 def logout(request):
@@ -100,45 +104,74 @@ def logout(request):
     return render (request, 'registration/signup.html')
 
 
+
+
 @login_required(login_url='/registration/login')
 def myPage(request):
     
-    return render(request, 'myPage.html')
+    return render(request, 'mypage.html')
 
-def new(request):
-    if request.method == 'POST':
-        new_post = Post.objects.create(
-            title = request.POST['title'],
-            content = request.POST['content'],
-            author = request.MsUser,
-            category = request.POST['category']
-        )
-        return redirect('detail', new_post.pk)
 
-    return render(request, 'board.html')
 
 @login_required(login_url = '/registration.login')
-def edit(request):
+def notice_edit(request):
     post = Post.objects.get(pk=post_pk)
     if request.method == 'POST':
         Post.objects.filter(pk=post_pk).update(
-
             title = request.POST['title'],
             content = request.POST['content']
         )
-        return redirect('board_detail', post_pk)
+        return redirect('board_notice_detail.html', post_pk)
     
     return render(request, 'board_detail_edit.html', {'post':post })
+
+def session_edit(request):
+    post = Post.objects.get(pk=post_pk)
+    if request.method == 'POST':
+        Post.objects.filter(pk=post_pk).update(
+            title = request.POST['title'],
+            content = request.POST['content']
+        )
+        return redirect('board_session_detail', post_pk)
+    
+    return render(request, 'board_detail_edit.html', {'post': post })
 
 
 
 def board(request):
     board_post = Post.objects.all()
-    return render(request, 'board.html', {'board_posts' : board_posts})
+    return render(request, 'board.html', {'board_posts' : board_post})
+
+def board_notice(request):
+    if request.method != "POST":
+        # posts = Post.objects.filter(category = "공지사항")
+        posts = Post.objects.all()
+        return render(request, 'board_notice.html', {'posts':posts})
+
+    elif request.method == "POST":
+        request_body = json.loads(request.body)
+        searchWord = request_body["searchWord"]
+        posts = Post.objects.filter(category= "공지사항")
+        sendPostCategory = []
+        sendPostAuthor = []
+        sendPostTitle = []
+        for i in range(0, len(posts)):
+            if searchWord in posts[0].title:
+                sendPostCategory.append(posts[i].category)
+                sendPostAuthor.append(posts[i].author)
+                sendPostTitle.append(posts[i].title)
+            
+    response = {
+        'author': sendPostAuthor,
+        'title' : sendPostTitle,
+        'category' : sendPostCategory
+    }
+
+    return HttpResponse(json.dumps(response))
 
 
 
-def board_detail (request, post_pk):
+def notice_detail (request, post_pk):
     post = Post.objects.get(pk=post_pk)
 
     if request.method == 'POST':
@@ -147,8 +180,56 @@ def board_detail (request, post_pk):
             content = request.POST ['post'],
             author = request.user
         )
-        return redirect('board_detail', post_pk)
-    return render(request,'board_detail.html', {'post':post})
+        return redirect('board_notice_detail', post_pk)
+    return render(request,'board_notice_detail.html', {'post':post})
+
+def session_detail (request, post_pk):
+    post = Post.objects.get(pk=post_pk)
+    if request.method == 'POST':
+        Comment.objects.create(
+            post = post,
+            content = request.POST['post'],
+            author = request.user
+        )
+        return redirect('board_session_detail', post_pk)
+    return render(request, 'board_session_detail.html', {'post':post})
+
+
+
+
+
+def board_session(request):
+    posts = Post.objects.filter(category = "세션")
+    return render(request, 'board_session.html', {'posts':posts})
+
+
+def notice_new(request):
+    if request.method == 'POST':
+        new_post = Post.objects.create(
+            title = request.POST['title'],
+            content = request.POST['content'],
+            author = request.MsUser,
+            category = request.Post.category
+        )
+        return redirect('board_notice', new_post.pk)
+
+    return render(request, 'board_notice_new.html')
+
+
+
+def session_new(request):
+    if request.method == 'POST':
+        new_post = Post.objects.create(
+            title = request.POST['title'],
+            content = request.POST['content'],
+            author = request.MsUser,
+            category = request.Post.category
+        )
+        return redirect('board_session', new_post.pk)
+
+    return render(request, 'board_session_new.html') 
+
+
 
 @csrf_exempt
 def memberCheck(request):
@@ -203,7 +284,7 @@ def memberCheck(request):
             'major': sendMajor,
             'IdNumber': sendIdNumber
         }
-        
+        print(response)
         return HttpResponse(json.dumps(response)) 
         # response = {
         #     "members" : SendTempMsUser
