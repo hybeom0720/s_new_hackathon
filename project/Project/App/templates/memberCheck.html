@@ -8,9 +8,9 @@
 <body>
     <div class = "showingGisoo">
         <form>
-        <select name = 'Gisoo'>
+        <select class = 'Gisoo'>
             {% for gisooNumber in Gisoo %}
-            <option value = "{{gisooNumber}}" onclick = "check()">{{gisooNumber}}</option>
+            <option  class = "order" value = "{{gisooNumber}}" >{{gisooNumber}}</option>
             {% endfor %}
         </select>
         </form>
@@ -31,11 +31,12 @@
 
     <script src ="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
+        option = document.querySelector(".Gisoo")
+
+        console.log(option)
         const check = () =>{
-            console.log(event.target.text)
             const sub = document.querySelector(".basicInfo")
-            axios.post("/memberCheck", {js_gisoo: event.target.text}).then(response=>{
-                console.log(response.data.name[0])
+            axios.post("/memberCheck", {js_gisoo: event.target.value}).then(response=>{
                 let newElement = `<div class = "basicInfo">`
                 var setNumber = response.data.name.length
 
@@ -57,6 +58,8 @@
             })
             .catch(error=>console.error(error))
         }
+        option.addEventListener("change", check)
+        
     </script>
 
 
