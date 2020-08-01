@@ -9,6 +9,15 @@ body {
   height: 100%;
   margin: 0;
   position: relative;
+
+}
+
+.container {
+    position: relative;
+    min-height: 100%;
+    padding-top: 120px;
+    padding-bottom: 350px;
+
 }
 
 a {
@@ -96,7 +105,7 @@ footer {
   font-size: 15px;
   line-height: 18px;
   margin-top: -3000px;
-}
+
 
 .footer_item {
   display: flex;
