@@ -18,6 +18,9 @@ def home(request):
     
     return render(request, 'home.html')
 
+def about(request):
+    return about(request, 'about.html')
+
 def login(request):
     if request.method == 'POST':
         found_user = auth.authenticate(
