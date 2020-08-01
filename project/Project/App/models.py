@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class MsUser(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null = False)
+    user = models.TextField() 
     name = models.TextField()
     kisoo = models.IntegerField(null = True, blank = True)
     email = models.TextField()

@@ -24,6 +24,15 @@ def home(request):
     
     return render(request, 'home.html')
 
+def about(request):
+    return render(request, 'about.html')
+
+def activities(request):
+    return render(request, "activities.html")
+
+def joinUs(reqeuest):
+    return render(request, "joinUs.html")
+
 def login(request):
     if request.method == 'POST':
         found_user = auth.authenticate(
@@ -42,7 +51,7 @@ def login(request):
 
     return render(request, 'registration/login.html')
 
-
+@csrf_exempt
 def signup(request):
     if request.method == 'POST':
         found_user = User.objects.filter(username = request.POST['username'])
@@ -55,8 +64,12 @@ def signup(request):
             password = request.POST['password']
         )
 
+        select_user = User.objects.filter(username = new_user.username)
+        print(select_user)
+        select_user = select_user[0]
+        print(select_user)
         MsUser.objects.create(
-            user = new_user.username,
+            user = select_user.username,
             name = request.POST['name'],
             kisoo = request.POST['kisoo'],
             email = request.POST['email'],
@@ -64,8 +77,20 @@ def signup(request):
             idNumber = request.POST['idNumber']
         )
 
+        add_user = MsUser.objects.filter(user = new_user.username)
+        BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        TEMP_DIR = os.path.join(BASE_DIR, "App", "DataBase", "MemberDataBase.csv")
+        f = open(TEMP_DIR,'a', newline='')
+        wr = csv.writer(f)
+        add_user = add_user[0]
+        wr.writerow([add_user.name, add_user.kisoo, add_user.email, add_user.major, add_user.idNumber])
+        
+        f.close()
+
         auth.login(request,new_user)
         return redirect('home')
+    
+    return render(request, 'registration/signup.html')
 
 
 def logout(request):
@@ -131,7 +156,7 @@ def memberCheck(request):
     TEMP_DIR = os.path.join(BASE_DIR, "App", "DataBase", "MemberDataBase.csv")
     TempMsUser.objects.all().delete()
 
-    with open(TEMP_DIR, newline='', encoding = "euc-kr") as csvfile:
+    with open(TEMP_DIR, newline='') as csvfile:
         csv_data = list(csv.reader(csvfile))
         
     if request.method != 'POST':

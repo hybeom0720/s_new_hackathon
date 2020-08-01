@@ -26,5 +26,12 @@ urlpatterns = [
     path('board/board_detail/<int:pk>', views.board_detail, name='board_detail'),
     path('', views.home, name = "home"),
     path('memberCheck', views.memberCheck, name = "memberCheck"),
+<<<<<<< HEAD
     path('joinUs', views.joinUs, name = "joinUs")
+=======
+    path("about", views.about, name = "about"),
+    path("activities", views.activities, name = "activities"),
+    path("joinUS", views.joinUs, name = "joinUs"),
+    path('mypage', views.myPage, name ="mypage")
+>>>>>>> master
 ]
