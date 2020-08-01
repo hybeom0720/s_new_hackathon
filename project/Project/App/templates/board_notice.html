@@ -15,7 +15,8 @@
     <tr>
         <td>{{ post.category }}</td>
         <td>{{ post.author }}</td>
-        <!-- <td><a href="{% url 'notice_detail' post.pk %}">{{ post.title }}</a></td> -->
+        <td><a href="{% url 'notice_detail' post.pk %}">{{ post.title }}</a></td>
+
     </tr>
     {% endfor %}
     </div>
@@ -29,7 +30,7 @@
 <script src ="https://unpkg.com/axios/dist/axios.min.js">
 const searchWord_raw = document.querySelector(".submittitle")
 const button = document.querySelecotr(".submitbutton")
-const serach = () => {
+const search = () => {
     const sub = document.querySelector(".table")
     axios.post("/board_notice", {searchWord :searchword}).then(response=>{
         searchWord = searchWord_raw.value
@@ -42,8 +43,7 @@ const serach = () => {
                                 `<td>`+response.data.category[index]+`</td>`+
                                 `<td>`+response.data.author[index]+`</td>`+
                                 `<td>`+response.data.title[index]+`</td>`+
-                                // `<td><a href = "{% url 'notice_detail' post.pk %}">{{`+
-                                    // response.data.title[index]+`}}</a><td>`+
+
                             `</tr>`
         }
         newElement += `</div>`

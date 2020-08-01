@@ -27,6 +27,7 @@ def about(request):
     return render(request, 'about.html')
 
 def activities(request):
+
     return render(request, 'activities.html')
     
 def members(request):
@@ -34,6 +35,7 @@ def members(request):
     
 def joinUs(request):
     return render(request, 'joinUs.html')
+
 
 def login(request):
     if request.method == 'POST':
@@ -43,12 +45,13 @@ def login(request):
         )
         if found_user is None:
             error = '아이디 또는 비밀번호가 틀렸습니다.'
-            return render(request, 'registartion/login.html')
+            return render(request, 'registration/login.html')
         
-        auth.authenticate(
+        auth.login(
             request, 
             found_user,
-            backend = 'django.contrib.auth.backends.ModelBackend')
+            backend = 'django.contrib.auth.backends.ModelBackend'
+        )
         return redirect(request.GET.get('next', '/'))
 
     return render(request, 'registration/login.html')
@@ -143,12 +146,11 @@ def board(request):
     return render(request, 'board.html', {'board_posts' : board_post})
 
 def board_notice(request):
-    if request.method != "POST":
-        # posts = Post.objects.filter(category = "공지사항")
-        posts = Post.objects.all()
-        return render(request, 'board_notice.html', {'posts':posts})
 
-    elif request.method == "POST":
+
+    # if request.method != "POST": 
+    if request.method == "POST":
+
         request_body = json.loads(request.body)
         searchWord = request_body["searchWord"]
         posts = Post.objects.filter(category= "공지사항")
@@ -161,13 +163,15 @@ def board_notice(request):
                 sendPostAuthor.append(posts[i].author)
                 sendPostTitle.append(posts[i].title)
             
-    response = {
-        'author': sendPostAuthor,
-        'title' : sendPostTitle,
-        'category' : sendPostCategory
-    }
+        response = {
+            'author': sendPostAuthor,
+            'title' : sendPostTitle,
+            'category' : sendPostCategory
+        }
 
-    return HttpResponse(json.dumps(response))
+        return HttpResponse(json.dumps(response))
+    posts = Post.objects.filter(category = "공지사항")
+    return render(request, 'board_notice.html', {'posts' :posts})
 
 
 
