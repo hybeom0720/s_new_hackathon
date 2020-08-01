@@ -11,6 +11,12 @@ class MsUser(models.Model):
     idNumber = models.IntegerField()
     authority = models.TextField()
 
+class TempMsUser(models.Model):
+    name = models.TextField()
+    kisoo = models.IntegerField(null = True, blank = True)
+    email = models.TextField()
+    major = models.TextField()
+    idNumber = models.IntegerField()
 
 class Post(models.Model):
     title = models.CharField(max_length =200)

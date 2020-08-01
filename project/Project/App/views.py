@@ -1,13 +1,24 @@
 from django.shortcuts import render, redirect
+from .models import MsUser, TempMsUser, Post, Comment, Like
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
-
-
 from django.contrib import auth
-from .models import MsUser, Post, Comment
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+from django.urls import reverse
+from django.http import JsonResponse
+import json, csv, os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TEMP_DIR = os.path.join(BASE_DIR, "app", "DataBase", "MemberDataBase.csv")
+
 # Create your views here.
 
 def home(request):
+    
+    return render(request, 'home.html')
+  
+  def home(request):
     return render(request, 'home.html')
 
 def login(request):
@@ -61,7 +72,11 @@ def logout(request):
     return render (request, 'registration/signup.html')
 
 
-@login_required(login_url = '/registration.login')
+@login_required(login_url='/registration/login')
+def myPage(request):
+    
+    return render(request, 'myPage.html')
+
 def new(request):
     if request.method == 'POST':
         new_post = Post.objects.create(
@@ -106,3 +121,67 @@ def board_detail (request, post_pk):
         )
         return redirect('board_detail', post_pk)
     return render(request,'board_detail.html', {'post':post})
+
+@csrf_exempt
+def memberCheck(request):
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    TEMP_DIR = os.path.join(BASE_DIR, "App", "DataBase", "MemberDataBase.csv")
+    TempMsUser.objects.all().delete()
+
+    with open(TEMP_DIR, newline='', encoding = "euc-kr") as csvfile:
+        csv_data = list(csv.reader(csvfile))
+        
+    if request.method != 'POST':
+        Gisoo = set()
+        for i in range(1,len(csv_data)):
+            Gisoo.add(csv_data[i][1])
+            if csv_data[i][1] == '8':
+                TempMsUser.objects.create(
+                    name = csv_data[i][0],
+                    kisoo = int(csv_data[i][1]),
+                    email = csv_data[i][2],
+                    major = csv_data[i][3],
+                    idNumber = csv_data[i][4]
+                )
+
+        SendTempMsUser = TempMsUser.objects.all()
+        print(SendTempMsUser) 
+        return render(request, 'memberCheck.html', {'members': SendTempMsUser, "Gisoo" : Gisoo})
+    
+    elif request.method == 'POST':
+        request_body = json.loads(request.body)
+        js_gisoo = request_body["js_gisoo"]
+
+        TempMsUser.objects.all().delete()
+        sendName = []
+        sendKisoo = []
+        sendEmail = []
+        sendMajor = []
+        sendIdNumber = []
+
+        for i in range(1,len(csv_data)):
+            if csv_data[i][1] == js_gisoo:
+                    sendName.append(csv_data[i][0])
+                    sendKisoo.append(int(csv_data[i][1]))
+                    sendEmail.append(csv_data[i][2])
+                    sendMajor.append(csv_data[i][3])
+                    sendIdNumber.append(csv_data[i][4])
+                
+
+        response = {
+            'name': sendName,
+            'kisoo': sendKisoo,
+            'email': sendEmail,
+            'major': sendMajor,
+            'IdNumber': sendIdNumber
+        }
+        
+        return HttpResponse(json.dumps(response)) 
+        # response = {
+        #     "members" : SendTempMsUser
+        # }
+
+        # return HttpResponse(json.dumps(response))
+
+
+    # return render(request.memberCheck.html)
