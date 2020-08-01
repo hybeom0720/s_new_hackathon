@@ -296,8 +296,9 @@ def memberCheck(request):
     # return render(request.memberCheck.html)
 
 
-@login_required(login_url='/registration/login')
+# @login_required(login_url='/registration/login')
 def joinUs(request):
+    print("난 삶이 힘들 떄 자바를 해")
     if request.method == 'POST':
         file_to_upload = request.FILES.get('file')
         session = Session(

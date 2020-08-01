@@ -7,6 +7,16 @@
   rel="stylesheet">
 
 {% block content %}
+<<<<<<< HEAD
+  <main>
+   <form method="post" enctype="multipart/form-data">
+   {% csrf_token %}
+     <h1>지원서 첨부하기</h1>
+    <input class="input-file" type="file" name="file">
+    <input class="submit-button" type="submit">
+   </form>
+  </main>
+=======
 <main>
   <!--   mainbox 시작 -->
   <div class="main-box">
@@ -87,4 +97,5 @@
 
 
 </main>
+>>>>>>> 4be072a73a4e11a3d49c9e9c8999ccc97a69718b
 {% endblock content %}
