@@ -1,21 +1,37 @@
 {% extends 'base.html'%}
+<link rel="stylesheet" type="text/css" href="/App/static/memberCheck.css">
+<link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 
 {% block content %}
-<table>
-    <tr>
-        <th>분류</th>
-        <th>작성자</th>
-        <th>제목</th>
-    </tr>
+<main>
+    <!--   mainbox 시작 -->
+    <div class="main-box">
+        <div class="main-content-box">
 
-    {% for post in posts %}
-    <tr>
-        <td>{{ post.category }}</td>
-        <td>{{ post.author }}</td>
-        <td><a href="{% url 'session_detail' %}">{{ post.title }}</a></td>
-    </tr>
-    {% endfor %}
-</table>
+            <div class="main-content-item one">MEMBERS</div>
+            <div class="main-content-item two">멋쟁이 사자처럼</br>고려대학교의<br>멤버를 소개합니다</div>
+            <div class="main-content-item three">1기~8기</div>
+        </div>
+    </div>
 
-<a href="{% url 'session_new' %}">새로작성</a>
+    <table>
+        <tr>
+            <th>분류</th>
+            <th>작성자</th>
+            <th>제목</th>
+        </tr>
+
+        {% for post in posts %}
+        <tr>
+            <td>{{ post.category }}</td>
+            <td>{{ post.author }}</td>
+            <td><a href="{% url 'session_detail' %}">{{ post.title }}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'session_new' %}">새로작성</a>
+</main>
 {% endblock content %}
