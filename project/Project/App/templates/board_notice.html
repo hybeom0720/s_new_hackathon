@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<table>
+    <tr>
+        <th>분류</th>
+        <th>작성자</th>
+        <th>제목</th>
+    </tr>
+
+    <div class = table>
+    {% for post in posts %}
+    <tr>
+        <td>{{ post.category }}</td>
+        <td>{{ post.author }}</td>
+        <!-- <td><a href="{% url 'notice_detail' post.pk %}">{{ post.title }}</a></td> -->
+    </tr>
+    {% endfor %}
+    </div>
+</table>
+<input type ="text" class = "submittitle" name = "title" placeholder = "제목">
+<button class = "submitbutton" onclick = "search()">검색</button>
+<!-- <a href="{% url 'notice_new' %}">새로작성</a> -->
+
+
+
+<script src ="https://unpkg.com/axios/dist/axios.min.js">
+const searchWord_raw = document.querySelector(".submittitle")
+const button = document.querySelecotr(".submitbutton")
+const serach = () => {
+    const sub = document.querySelector(".table")
+    axios.post("/board_notice", {searchWord :searchword}).then(response=>{
+        searchWord = searchWord_raw.value
+        let newElemnt = `<div class = "table">`
+        var setNumber = response.data.title.length
+
+        for(index =0; index<setNumber; index++){
+            newElement += `<tr>`
+                            `<td>`+response.data.title[index]+`</td>`+
+                                `<td>`+response.data.category[index]+`</td>`+
+                                `<td>`+response.data.author[index]+`</td>`+
+                                `<td>`+response.data.title[index]+`</td>`+
+                                // `<td><a href = "{% url 'notice_detail' post.pk %}">{{`+
+                                    // response.data.title[index]+`}}</a><td>`+
+                            `</tr>`
+        }
+        newElement += `</div>`
+        sub.insertAdjacentHTML("afterend", newElement)
+        sub.remove()
+    }).catch(error=>console.error(error))
+
+}
+
+
+</script>
+{% endblock content %}>
