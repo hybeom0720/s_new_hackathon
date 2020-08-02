@@ -1,5 +1,5 @@
 main {
-    width: 60%;
+    width: 70%;
     height: 80%;
     margin: 0 auto;
 }
@@ -49,7 +49,7 @@ main {
     position: absolute;
     width: 260.31px;
     height: 274.37px;
-    left: 1000px;
+    left: 950px;
     top: 180px;
     border-radius: 45px;
     transform: rotate(5deg);
@@ -140,8 +140,8 @@ main {
     position: absolute;
     width: 200px;
     height: 200px;
-    left: 1100px;
-    top: 1500px;
+    left: 950px;
+    top: 1400px;
 }
 
 
@@ -184,6 +184,7 @@ main {
     display: flex;
     align-items: center;
     padding: 50px 80px;
+    margin-bottom: 50px;
 }
 
 .joinUs-content-box {
@@ -212,8 +213,8 @@ main {
     position: absolute;
     width: 150px;
     height: 150px;
-    left: 1100px;
-    top: 2600px;
+    left: 950px;
+    top: 2400px;
 }
 
 

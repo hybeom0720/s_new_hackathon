@@ -1,8 +1,7 @@
 {% extends 'base.html' %} {% block title %}{% endblock title %} {% load static %}
-<link rel="stylesheet" type="text/css" href="/App/static/memberCheck.css">
+{% block css %}<link rel="stylesheet" type="text/css" href="../static/memberCheck.css">{% endblock css %}
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-
+{% block content %}
 <main>
     <!--   mainbox 시작 -->
     <div class="main-box">
@@ -15,19 +14,18 @@
     </div>
 
     <!--   mainbox 끝 -->
-    <div class="title">
+    <h3 class="title">
         🦁 기수별 멤버 소개
-    </div>
+    </h3>
     <div class="showingGisoo">
         <div class="text">기수 선택하기</div>
         <form>
             <select class='Gisoo'>
-                {% block content %}
-                <br>
-                <br>
-                <br>
-                <br>
 
+                <br>
+                <br>
+                <br>
+                <br>
                 {% for gisooNumber in Gisoo %}
                 <option class="order" value="{{gisooNumber}}">{{gisooNumber}}</option>
                 {% endfor %}
@@ -45,7 +43,7 @@
 
         </div>
     </div>
-
+</main>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         option = document.querySelector(".Gisoo")
@@ -80,7 +78,7 @@
         }
         option.addEventListener("change", check)
     </script>
-</main>
+
 
 
 {% endblock content %}
