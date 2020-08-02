@@ -33,3 +33,8 @@
          }, 10);
      }
  });
+
+
+
+ const mypage = document.querySelector('nav-mypage');
+ const logout = document.querySelector('nav-logout');

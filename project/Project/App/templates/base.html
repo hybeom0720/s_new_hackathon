@@ -38,8 +38,8 @@
 
     {% if user.is_authenticated %}
         <div class="member-option">
-            <a class="nav-item" href="{% url 'mypage' %}">마이페이지</a>
-            <a class="nav-item" href="{% url 'logout' %}">로그아웃</a>
+            <a class="nav-item nav-mypage" href="{% url 'mypage' %}">마이페이지</a>
+            <a class="nav-item nav-logout" href="{% url 'logout' %}">로그아웃</a>
         </div>
     {% endif %}
     <div class="container">
