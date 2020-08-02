@@ -28,7 +28,7 @@
         <div class="member-nav-bar">
             {% if user.is_authenticated %}
             <div class="nav-item user-name">
-                <p>멋쟁이 USER님</p>
+                <p style="display:inline;">멋쟁이 <div style="color : #FEBB3B; display:inline; padding : 0; margin : 0;">{{ user.username }}</div>님</p>
             </div>
             {% else %}
             <a class="nav-item" href="{% url 'login' %}">LOGIN</a>
@@ -37,34 +37,17 @@
     </div>
 
     {% if user.is_authenticated %}
-    <div class="member-option">
-        <a class="nav-item" href="{% url 'mypage' %}">마이페이지</a>
-        <a class="nav-item" href="{% url 'logout' %}">로그아웃</a>
-    </div>
+        <div class="member-option">
+            <a class="nav-item" href="{% url 'mypage' %}">마이페이지</a>
+            <a class="nav-item" href="{% url 'logout' %}">로그아웃</a>
+        </div>
     {% endif %}
     <div class="container">
         {% block content %} {% endblock content %}
     </div>
+
+    <script type="text/javascript" src="../static/base.js?ver=123"></script>
     {% block js %}{% endblock js %}
-    <script src="../static/base.js"></script>
-    <script type="text/javascript">
-        /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
-        (function(d, m) {
-            var kommunicateSettings = {
-                "appId": "a6f13994ce9205491944ea2f00ae9abf",
-                "popupWidget": true,
-                "automaticChatOpenOnNavigation": true
-            };
-            var s = document.createElement("script");
-            s.type = "text/javascript";
-            s.async = true;
-            s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
-            var h = document.getElementsByTagName("head")[0];
-            h.appendChild(s);
-            window.kommunicate = m;
-            m._globals = kommunicateSettings;
-        })(document, window.kommunicate || {});
-    </script>
 </body>
 <footer>
     <div class="footer_item">

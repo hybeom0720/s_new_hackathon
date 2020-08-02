@@ -43,10 +43,10 @@ def login(request):
         )
         if found_user is None:
             error = '아이디 또는 비밀번호가 틀렸습니다.'
-            return render(request, 'registration/login.html')
+            return render(request, 'registration/login.html', {'error' : error})
         
         auth.login(
-            request, 
+            request,
             found_user,
             backend = 'django.contrib.auth.backends.ModelBackend')
         return redirect(request.GET.get('next', '/'))
@@ -101,14 +101,13 @@ def logout(request):
     auth.logout(request)
     return redirect('home')
 
-    return render (request, 'registration/signup.html')
+    # return render (request, 'registration/signup.html')
 
 
 
 
 @login_required(login_url='/registration/login')
 def myPage(request):
-    
     return render(request, 'mypage.html')
 
 
