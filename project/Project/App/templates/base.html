@@ -28,7 +28,7 @@
         <div class="member-nav-bar">
             {% if user.is_authenticated %}
             <div class="nav-item user-name">
-                <p>멋쟁이 {{ user.username }}님</p>
+                <p style="display:inline;">멋쟁이 <div style="color : #FEBB3B; display:inline; padding : 0; margin : 0;">{{ user.username }}</div>님</p>
             </div>
             {% else %}
             <a class="nav-item" href="{% url 'login' %}">LOGIN</a>
