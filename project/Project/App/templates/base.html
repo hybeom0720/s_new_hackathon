@@ -64,44 +64,6 @@
             window.kommunicate = m;
             m._globals = kommunicateSettings;
         })(document, window.kommunicate || {});
-
-        function test(imageName) {
-            LoadingWithMask('your site\'s image path');
-            setTimeout("closeLoadingWithMask()", 3000);
-        }
-
-        function LoadingWithMask(gif) {
-            //화면의 높이와 너비를 구합니다.
-            var maskHeight = $(document).height();
-            var maskWidth = window.document.body.clientWidth;
-            var body = document.querySelector('body');
-
-            var mask = "<div id='mask' style='position:absolute; z-index:9000; background-color:#000000; display:none; left:0; top:0;'></div>";
-            var loadingImg = '';
-
-            loadingImg += " <img src='./loadingImg.gif' style='position: absolute; display: block; margin: 0px auto;'/>";
-
-            $('#body').append(mask)
-            body.append(mask)
-
-            $('#mask').css({
-                'width': maskWidth,
-                'height': maskHeight,
-                'opacity': '0.3'
-            });
-
-            //마스크 표시
-            $('#mask').show();
-
-            //로딩중 이미지 표시
-            $('#loadingImg').append(loadingImg);
-            $('#loadingImg').show();
-        }
-
-        function closeLoadingWithMask() {
-            $('#mask, #loadingImg').hide();
-            $('#mask, #loadingImg').empty();
-        }
     </script>
 </body>
 <footer>
